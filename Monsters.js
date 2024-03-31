@@ -1199,7 +1199,7 @@ function draw()
 	}
 	else if (gamestate == 2) //Overworld
 	{
-		console.log(Math.floor(p.x/45) + ", " + Math.floor(p.y/45));
+		//console.log(Math.floor(p.x/45) + ", " + Math.floor(p.y/45));
 		if(canEvolve.length > 0)
 		{
 			gamestate = 7;
@@ -1763,7 +1763,7 @@ function draw()
 	}
 	else if (gamestate == 3) //Battle
 	{
-		if(team[0].currhealth == 0 && !friendFainted)
+		if(team[teamIndex].currhealth == 0 && !friendFainted)
 		{
 			for(i = 0; i < team.length; i++)
 			{
@@ -1774,14 +1774,12 @@ function draw()
 					break;
 				}
 			}
-		}else
-		{
-			teamIndex = 0;
 		}
 		if (!hasloaded)
 		{
 			img1 = load(Images[team[teamIndex].id][1]);
 			img2 = load(Images[enemy[enemyIndex].id][0]);
+			hasloaded = true;
 		}
 		if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && !keyIsDown(90) && !keyIsDown(88))
 		{
@@ -2148,10 +2146,13 @@ function draw()
 							friendStats[0] = max(-6,friendStats[0]-1) 
 							//console.log(friendStats);
 						}
-						if (team[teamIndex].currhealth < 0) 
+						if (team[teamIndex].currhealth <= 0) 
 						{
 							team[teamIndex].currhealth = 0;
+							friendFainted = true;
 							currText.push(team[teamIndex].name + " has fainted");
+							holding = true;
+							battlemenu = 3;
 						}
 					}
 				}else
@@ -2184,7 +2185,9 @@ function draw()
 					if (team[teamIndex].currhealth <= 0) 
 					{
 						team[teamIndex].currhealth = 0;
+						friendFainted = true;
 						currText.push(team[teamIndex].name + " has fainted");
+						holding = true;
 						battlemenu = 3;
 					}else
 					{
@@ -2308,6 +2311,7 @@ function draw()
 						battlemenu = 2;
 						hasloaded = false;
 						holding = true;
+						friendFainted = false;
 						option = 0;
 					}
 				}
@@ -2347,9 +2351,12 @@ function draw()
 								currText.push("You threw a satchel at the " + enemy[enemyIndex].name);
 								battlemenu = 2;
 								catchNum = Math.floor(Math.random() * 255);
-								needed = enemy[enemyIndex].health * 255 * 4;
-								needed /= enemy[enemyIndex].currhealth * 12;
+								needed = 3 * enemy[enemyIndex].health - (2*enemy[enemyIndex].currhealth);
+								needed *= 75;
+								needed /= 3 * enemy[enemyIndex].health;
+								needed = max(1, min(255, needed));
 								needed = Math.floor(needed);
+								console.log(needed);
 								if(catchNum > needed)
 								{
 									currText.push("The " + enemy[enemyIndex].name + " was caught")
