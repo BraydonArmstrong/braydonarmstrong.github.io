@@ -1,0 +1,50 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "Map.tmx",
+    "expandedProjectPaths": [
+        "Tiles",
+        "."
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        ":/automap-tiles.tsx": {
+            "scaleInDock": 1
+        },
+        "Map.tmx": {
+            "scale": 0.125,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 4488,
+                "y": 1168
+            }
+        },
+        "Tiles.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        }
+    },
+    "last.exportedFilePath": "C:/Users/Armst/OneDrive/Desktop/University/CS2613/Exploration Activities/exploration-activity-2-BraydonArmstrong/assets",
+    "last.imagePath": "C:/Users/Armst/OneDrive/Desktop/University/CS2613/Exploration Activities/exploration-activity-2-BraydonArmstrong/assets/Tiles",
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.tsj *.json)",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "CSV files (*.csv)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 15,
+    "map.tileWidth": 15,
+    "openFiles": [
+        "Map.tmx",
+        "Tiles.tsx"
+    ],
+    "project": "Tilemap.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "Tiles.tsx",
+        "Map.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}
