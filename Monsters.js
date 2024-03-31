@@ -997,7 +997,7 @@ spawnList = [
 ];
 
 
-spawnListLevel = [1,6,12,4,8];
+spawnListLevel = [2,7,13,5,9];
 p = {};
 p.x = 45 * 5;
 p.y = 45 * 5;
@@ -1763,7 +1763,7 @@ function draw()
 	}
 	else if (gamestate == 3) //Battle
 	{
-		if(team[teamIndex].currhealth == 0 && friendFainted != true)
+		if(team[0].currhealth == 0 && !friendFainted)
 		{
 			for(i = 0; i < team.length; i++)
 			{
@@ -1774,6 +1774,9 @@ function draw()
 					break;
 				}
 			}
+		}else
+		{
+			teamIndex = 0;
 		}
 		if (!hasloaded)
 		{
@@ -1864,11 +1867,11 @@ function draw()
 							{
 								if(isTrainer)
 								{
-									team[i].currxp += Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
+									team[i].currxp += Math.floor(Math.floor((192 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
 									currText.push(team[i].name + " has gained " + Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5) + " experience" );
 								}else
 								{
-									team[i].currxp += Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
+									team[i].currxp += Math.floor(Math.floor((192 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
 									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
 								}
 								
