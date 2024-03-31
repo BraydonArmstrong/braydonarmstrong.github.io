@@ -585,7 +585,7 @@ let TileImages = [];
 //var pixelFont = loadFont('assets/slkscr.ttf');
 function preload()
 {
-	font = loadFont("assets/PressStart2p-Regular.ttf");
+	font = loadFont("assets/PressStart2P-Regular.ttf");
 	Images = [
 		['assets/Woodzar.png', 'assets/Woodzar_back.png'],
 		['assets/Barklock.png', 'assets/Barklock_back.png'],
@@ -658,6 +658,7 @@ function preload()
 		[loadImage('assets/Conchfusing_follow_front.png'), loadImage('assets/Conchfusing_follow_left.png'), loadImage('assets/Conchfusing_follow_right.png'), loadImage('assets/Conchfusing_follow_back.png')],
 		[loadImage('assets/Claidmourn_follow_front.png'), loadImage('assets/Claidmourn_follow_left.png'), loadImage('assets/Claidmourn_follow_right.png'), loadImage('assets/Claidmourn_follow_back.png')],
 	];
+
 	Player = [
 		[loadImage('assets/Player_front1.png'), loadImage('assets/Player_front2.png')],
 		[loadImage('assets/Player_left1.png'), loadImage('assets/Player_left2.png')],
