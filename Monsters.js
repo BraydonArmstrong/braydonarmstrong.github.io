@@ -673,7 +673,7 @@ function preload()
 	];
 	grimmBattle = loadImage('assets/GrimmBattle.png');
 	psychicBattle = loadImage('assets/Psychic.png');
-	tileset = loadJSON('assets/tiles/tileset.tsj', loadTiles);
+	tileset = loadJSON('assets/Tiles/tileset.tsj', loadTiles);
 	//gamestate = 2;
 }
 
