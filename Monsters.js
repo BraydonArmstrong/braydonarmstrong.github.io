@@ -858,10 +858,10 @@ function calcDamage(user, target, move, isFriend)
 	{
 		mult *= 1.5;
 	}
-	mult *= typechart[target.type1][move.type];
+	mult *= typechart[move.type][target.type1];
 	if (target.type2 != null)
 	{
-		mult *= typechart[target.type2][move.type];
+		mult *= typechart[move.type][target.type2];
 	}
 	mult *= (217 + Math.floor(Math.random() * 40)) / 255;
 	a = (Math.floor((2 * user.level * crit)/5) + 2);
@@ -1287,7 +1287,7 @@ function draw()
 			moved = false;
 			if (!textBox)
 			{
-				if (!keyIsDown(90) && !keyIsDown(69))
+				if (!keyIsDown(90) && !keyIsDown(69) && !keyIsDown(68))
 				{
 					holding = false;
 				}
@@ -1364,6 +1364,8 @@ function draw()
 								isTrainer = true;
 								isGym = true;
 								currText.push("Good luck kid");
+								friendStats = [0,0,0,0,0];
+								enemyStats = [0,0,0,0,0];
 								battlemenu = 2;
 								hasloaded = false;
 								numEnemies = 2;
@@ -1409,6 +1411,12 @@ function draw()
 				{
 					menuOpen = true;
 					gamestate = 4;
+					hasloaded = false;
+				}
+				if(keyIsDown(68) && !holding)
+				{
+					menuOpen = true;
+					gamestate = 1;
 					hasloaded = false;
 				}
 				if (keyIsDown(UP_ARROW))
@@ -1499,6 +1507,8 @@ function draw()
 								isTrainer = false;
 								isGym = false;
 								gamestate = 3;
+								friendStats = [0,0,0,0,0];
+								enemyStats = [0,0,0,0,0];
 								enemy = []
 								enemy[0] = Object.create(Monster);
 								Object.assign(enemy[0], Mons[spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)][Math.floor(Math.random() * spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)].length)]])
@@ -2082,7 +2092,21 @@ function draw()
 					currText.push(team[teamIndex].name + " used " + Moves[team[teamIndex].moves[option]].name);
 					if(Moves[team[teamIndex].moves[option]].moveType == 0)
 					{
-						enemy[enemyIndex].currhealth -= calcDamage(team[teamIndex], enemy[enemyIndex], Moves[team[teamIndex].moves[0]], true);
+						enemy[enemyIndex].currhealth -= calcDamage(team[teamIndex], enemy[enemyIndex], Moves[team[teamIndex].moves[option]], true);
+						mult = 1;
+						mult *= typechart[Moves[team[teamIndex].moves[option]].type][enemy[enemyIndex].type1];
+						if (enemy[enemyIndex].type2 != null)
+						{
+							mult *= typechart[Moves[team[teamIndex].moves[option]].type][enemy[enemyIndex].type2];
+						}
+						if(mult > 1)
+						{
+							currText.push("It was super effective");
+						}else if(mult < 1)
+						{
+							currText.push("It was not very effective");
+						}
+					
 					}
 					if((Moves[team[teamIndex].moves[option]].effect == 1))
 					{
@@ -2102,6 +2126,19 @@ function draw()
 						if(Moves[enemy[enemyIndex].moves[picked]].moveType == 0)
 						{
 							team[teamIndex].currhealth -= calcDamage(enemy[enemyIndex], team[teamIndex], Moves[enemy[enemyIndex].moves[picked]], false);
+							mult = 1;
+							mult *= typechart[Moves[enemy[enemyIndex].moves[picked]].type][team[teamIndex].type1];
+							if (team[teamIndex].type2 != null)
+							{
+								mult *= typechart[Moves[enemy[enemyIndex].moves[picked]].type][team[teamIndex].type2];
+							}
+							if(mult > 1)
+							{
+								currText.push("It was super effective");
+							}else if(mult < 1)
+							{
+								currText.push("It was not very effective");
+							}
 						}
 						if(Moves[enemy[enemyIndex].moves[picked]].effect == 1)
 						{
@@ -2122,6 +2159,19 @@ function draw()
 					if(Moves[enemy[enemyIndex].moves[picked]].moveType == 0)
 					{
 						team[teamIndex].currhealth -= calcDamage(enemy[enemyIndex], team[teamIndex], Moves[enemy[enemyIndex].moves[picked]], false);
+						mult = 1;
+						mult *= typechart[Moves[enemy[enemyIndex].moves[picked]].type][team[teamIndex].type1];
+						if (team[teamIndex].type2 != null)
+						{
+							mult *= typechart[Moves[enemy[enemyIndex].moves[picked]].type][team[teamIndex].type2];
+						}
+						if(mult > 1)
+						{
+							currText.push("It was super effective");
+						}else if(mult < 1)
+						{
+							currText.push("It was not very effective");
+						}
 					}
 					if(Moves[enemy[enemyIndex].moves[picked]].effect == 1)
 					{
@@ -2139,6 +2189,19 @@ function draw()
 						if(Moves[team[teamIndex].moves[option]].moveType == 0)
 						{
 							enemy[enemyIndex].currhealth -= calcDamage(team[teamIndex], enemy[enemyIndex], Moves[team[teamIndex].moves[0]], true);
+							mult = 1;
+							mult *= typechart[Moves[team[teamIndex].moves[option]].type][enemy[enemyIndex].type1];
+							if (enemy[enemyIndex].type2 != null)
+							{
+								mult *= typechart[Moves[team[teamIndex].moves[option]].type][enemy[enemyIndex].type2];
+							}
+							if(mult > 1)
+							{
+								currText.push("It was super effective");
+							}else if(mult < 1)
+							{
+								currText.push("It was not very effective");
+							}
 						}
 						if((Moves[team[teamIndex].moves[option]].effect == 1))
 						{
