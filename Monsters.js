@@ -582,97 +582,97 @@ Moves[start].effect = 0;
 Moves[start].moveType = 0;
 let tileset;
 let TileImages = [];
-//var pixelFont = loadFont('assets/slkscr.ttf');
+//var pixelFont = loadFont('braydonarmstrong.github.io/assets/slkscr.ttf');
 function preload()
 {
-	font = loadFont("assets/PressStart2p-Regular.ttf");
+	font = loadFont("braydonarmstrong.github.io/assets/PressStart2p-Regular.ttf");
 	Images = [
-		['assets/Woodzar.png', 'assets/Woodzar_back.png'],
-		['assets/Barklock.png', 'assets/Barklock_back.png'],
-		['assets/Twiggdrasil.png', 'assets/Twiggdrasil_back.png'],
-		['assets/Platypyro.png', 'assets/Platypyro_back.png'],
-		['assets/Ignatus.png', 'assets/Ignatus_back.png'],
-		['assets/Scorapsid.png', 'assets/Scorapsid_back.png'],
-		['assets/Toadart.png', 'assets/Toadart_back.png'],
-		['assets/Frogun.png', 'assets/Frogun_back.png'],
-		['assets/Frogangsta.png', 'assets/Frogangsta_back.png'],
-		['assets/Peckish.png', 'assets/Peckish_back.png'],
-		['assets/Cooken.png', 'assets/Cooken_back.png'],
-		['assets/Satisfowl.png', 'assets/Satisfowl_back.png'],
-		['assets/Ajji.png', 'assets/Ajji_back.png'],
-		['assets/Majji.png', 'assets/Majji_back.png'],
-		['assets/Tarajji.png', 'assets/Tarajji_back.png'],
-		['assets/Tailtic.png', 'assets/Tailtic_back.png'],
-		['assets/Mowdy.png', 'assets/Mowdy_back.png'],
-		['assets/Rodeont.png', 'assets/Rodeont_back.png'],
-		['assets/Edgehog.png', 'assets/Edgehog_back.png'],
-		['assets/Hedgewolf.png', 'assets/Hedgewolf_back.png'],
-		['assets/Bugof.png', 'assets/Bugof_back.png'],
-		['assets/Buzzof.png', 'assets/Buzzof_back.png'],
-		['assets/Buggerof.png', 'assets/Buggerof_back.png'],
-		['assets/Shrude.png', 'assets/Shrude_back.png'],
-		['assets/Corvicious.png', 'assets/Corvicious_back.png'],
-		['assets/Wormse.png', 'assets/Wormse_back.png'],
-		['assets/Pupamid.png', 'assets/Pupamid_back.png'],
-		['assets/Betterfly.png', 'assets/Betterfly_back.png'],
-		['assets/Squiddimi.png', 'assets/Squiddimi_back.png'],
-		['assets/Squiddnapper.png', 'assets/Squiddnapper_back.png'],
-		['assets/Shrimple.png', 'assets/Shrimple_back.png'],
-		['assets/Clamplex.png', 'assets/Clamplex_back.png'],
-		['assets/Conchfusing.png', 'assets/Conchfusing_back.png'],
-		['assets/Claidmourn.png', 'assets/Claidmourn_back.png']
+		['braydonarmstrong.github.io/assets/Woodzar.png', 'braydonarmstrong.github.io/assets/Woodzar_back.png'],
+		['braydonarmstrong.github.io/assets/Barklock.png', 'braydonarmstrong.github.io/assets/Barklock_back.png'],
+		['braydonarmstrong.github.io/assets/Twiggdrasil.png', 'braydonarmstrong.github.io/assets/Twiggdrasil_back.png'],
+		['braydonarmstrong.github.io/assets/Platypyro.png', 'braydonarmstrong.github.io/assets/Platypyro_back.png'],
+		['braydonarmstrong.github.io/assets/Ignatus.png', 'braydonarmstrong.github.io/assets/Ignatus_back.png'],
+		['braydonarmstrong.github.io/assets/Scorapsid.png', 'braydonarmstrong.github.io/assets/Scorapsid_back.png'],
+		['braydonarmstrong.github.io/assets/Toadart.png', 'braydonarmstrong.github.io/assets/Toadart_back.png'],
+		['braydonarmstrong.github.io/assets/Frogun.png', 'braydonarmstrong.github.io/assets/Frogun_back.png'],
+		['braydonarmstrong.github.io/assets/Frogangsta.png', 'braydonarmstrong.github.io/assets/Frogangsta_back.png'],
+		['braydonarmstrong.github.io/assets/Peckish.png', 'braydonarmstrong.github.io/assets/Peckish_back.png'],
+		['braydonarmstrong.github.io/assets/Cooken.png', 'braydonarmstrong.github.io/assets/Cooken_back.png'],
+		['braydonarmstrong.github.io/assets/Satisfowl.png', 'braydonarmstrong.github.io/assets/Satisfowl_back.png'],
+		['braydonarmstrong.github.io/assets/Ajji.png', 'braydonarmstrong.github.io/assets/Ajji_back.png'],
+		['braydonarmstrong.github.io/assets/Majji.png', 'braydonarmstrong.github.io/assets/Majji_back.png'],
+		['braydonarmstrong.github.io/assets/Tarajji.png', 'braydonarmstrong.github.io/assets/Tarajji_back.png'],
+		['braydonarmstrong.github.io/assets/Tailtic.png', 'braydonarmstrong.github.io/assets/Tailtic_back.png'],
+		['braydonarmstrong.github.io/assets/Mowdy.png', 'braydonarmstrong.github.io/assets/Mowdy_back.png'],
+		['braydonarmstrong.github.io/assets/Rodeont.png', 'braydonarmstrong.github.io/assets/Rodeont_back.png'],
+		['braydonarmstrong.github.io/assets/Edgehog.png', 'braydonarmstrong.github.io/assets/Edgehog_back.png'],
+		['braydonarmstrong.github.io/assets/Hedgewolf.png', 'braydonarmstrong.github.io/assets/Hedgewolf_back.png'],
+		['braydonarmstrong.github.io/assets/Bugof.png', 'braydonarmstrong.github.io/assets/Bugof_back.png'],
+		['braydonarmstrong.github.io/assets/Buzzof.png', 'braydonarmstrong.github.io/assets/Buzzof_back.png'],
+		['braydonarmstrong.github.io/assets/Buggerof.png', 'braydonarmstrong.github.io/assets/Buggerof_back.png'],
+		['braydonarmstrong.github.io/assets/Shrude.png', 'braydonarmstrong.github.io/assets/Shrude_back.png'],
+		['braydonarmstrong.github.io/assets/Corvicious.png', 'braydonarmstrong.github.io/assets/Corvicious_back.png'],
+		['braydonarmstrong.github.io/assets/Wormse.png', 'braydonarmstrong.github.io/assets/Wormse_back.png'],
+		['braydonarmstrong.github.io/assets/Pupamid.png', 'braydonarmstrong.github.io/assets/Pupamid_back.png'],
+		['braydonarmstrong.github.io/assets/Betterfly.png', 'braydonarmstrong.github.io/assets/Betterfly_back.png'],
+		['braydonarmstrong.github.io/assets/Squiddimi.png', 'braydonarmstrong.github.io/assets/Squiddimi_back.png'],
+		['braydonarmstrong.github.io/assets/Squiddnapper.png', 'braydonarmstrong.github.io/assets/Squiddnapper_back.png'],
+		['braydonarmstrong.github.io/assets/Shrimple.png', 'braydonarmstrong.github.io/assets/Shrimple_back.png'],
+		['braydonarmstrong.github.io/assets/Clamplex.png', 'braydonarmstrong.github.io/assets/Clamplex_back.png'],
+		['braydonarmstrong.github.io/assets/Conchfusing.png', 'braydonarmstrong.github.io/assets/Conchfusing_back.png'],
+		['braydonarmstrong.github.io/assets/Claidmourn.png', 'braydonarmstrong.github.io/assets/Claidmourn_back.png']
 	];
 	followMons = [
-		[loadImage('assets/Woodzar_Follow_front.png'), loadImage('assets/Woodzar_Follow_Left.png'), loadImage('assets/Woodzar_Follow_Right.png'), loadImage('assets/Woodzar_Follow_Back.png')],
-		[loadImage('assets/Barklock_Follow_front.png'), loadImage('assets/Barklock_Follow_Left.png'), loadImage('assets/Barklock_Follow_Right.png'), loadImage('assets/Barklock_Follow_Back.png')],
-		[loadImage('assets/Twiggdrasil_Follow_Front.png'), loadImage('assets/Twiggdrasil_Follow_Left.png'), loadImage('assets/Twiggdrasil_Follow_Right.png'), loadImage('assets/Twiggdrasil_Follow_Back.png')],
-		[loadImage('assets/Platypyro_Follow_Front.png'), loadImage('assets/Platypyro_Follow_Left.png'), loadImage('assets/Platypyro_Follow_Right.png'), loadImage('assets/Platypyro_Follow_Back.png')],
-		[loadImage('assets/Ignatus_Follow_Front.png'), loadImage('assets/Ignatus_Follow_Left.png'), loadImage('assets/Ignatus_Follow_Right.png'), loadImage('assets/Ignatus_Follow_Back.png')],
-		[loadImage('assets/Scorapsid_Follow_Front.png'), loadImage('assets/Scorapsid_Follow_Left.png'), loadImage('assets/Scorapsid_Follow_Right.png'), loadImage('assets/Scorapsid_Follow_Back.png')],
-		[loadImage('assets/Toadart_Follow_Front.png'), loadImage('assets/Toadart_Follow_Left.png'), loadImage('assets/Toadart_Follow_Right.png'), loadImage('assets/Toadart_Follow_Back.png')],
-		[loadImage('assets/Frogun_Follow_Front.png'), loadImage('assets/Frogun_Follow_Left.png'), loadImage('assets/Frogun_Follow_Right.png'), loadImage('assets/Frogun_Follow_Back.png')],
-		[loadImage('assets/Frogangsta_Follow_Front.png'), loadImage('assets/Frogangsta_Follow_Left.png'), loadImage('assets/Frogangsta_Follow_Right.png'), loadImage('assets/Frogangsta_Follow_Back.png')],
-		[loadImage('assets/Peckish_Follow_Front.png'), loadImage('assets/Peckish_Follow_Left.png'), loadImage('assets/Peckish_Follow_Right.png'), loadImage('assets/Peckish_Follow_Back.png')],
-		[loadImage('assets/Cooken_Follow_Front.png'), loadImage('assets/Cooken_Follow_Left.png'), loadImage('assets/Cooken_Follow_Right.png'), loadImage('assets/Cooken_Follow_Back.png')],
-		[loadImage('assets/Satisfowl_Follow_Front.png'), loadImage('assets/Satisfowl_Follow_Left.png'), loadImage('assets/Satisfowl_Follow_Right.png'), loadImage('assets/Satisfowl_Follow_Back.png')],
-		[loadImage('assets/Ajji_Follow_Front.png'), loadImage('assets/Ajji_Follow_Left.png'), loadImage('assets/Ajji_Follow_Right.png'), loadImage('assets/Ajji_Follow_Back.png')],
-		[loadImage('assets/Majji_Follow_Front.png'), loadImage('assets/Majji_Follow_Left.png'), loadImage('assets/Majji_Follow_Right.png'), loadImage('assets/Majji_Follow_Back.png')],
-		[loadImage('assets/Tarajji_Follow_Front.png'), loadImage('assets/Tarajji_Follow_Left.png'), loadImage('assets/Tarajji_Follow_Right.png'), loadImage('assets/Tarajji_Follow_Back.png')],
-		[loadImage('assets/Tailtic_Follow_Front.png'), loadImage('assets/Tailtic_Follow_Left.png'), loadImage('assets/Tailtic_Follow_Right.png'), loadImage('assets/Tailtic_Follow_Back.png')],
-		[loadImage('assets/Mowdy_Follow_Front.png'), loadImage('assets/Mowdy_Follow_Left.png'), loadImage('assets/Mowdy_Follow_Right.png'), loadImage('assets/Mowdy_Follow_Back.png')],
-		[loadImage('assets/Rodeont_Follow_Front.png'), loadImage('assets/Rodeont_Follow_Left.png'), loadImage('assets/Rodeont_Follow_Right.png'), loadImage('assets/Rodeont_Follow_Back.png')],
-		[loadImage('assets/Edgehog_Follow_Front.png'), loadImage('assets/Edgehog_Follow_Left.png'), loadImage('assets/Edgehog_Follow_Right.png'), loadImage('assets/Edgehog_Follow_Back.png')],
-		[loadImage('assets/Hedgewolf_Follow_Front.png'), loadImage('assets/Hedgewolf_Follow_Left.png'), loadImage('assets/Hedgewolf_Follow_Right.png'), loadImage('assets/Hedgewolf_Follow_Back.png')],
-		[loadImage('assets/Bugof_Follow_Front.png'), loadImage('assets/Bugof_Follow_Left.png'), loadImage('assets/Bugof_Follow_Right.png'), loadImage('assets/Bugof_Follow_Back.png')],
-		[loadImage('assets/Buzzof_Follow_Front.png'), loadImage('assets/Buzzof_Follow_Left.png'), loadImage('assets/Buzzof_Follow_Right.png'), loadImage('assets/Buzzof_Follow_Back.png')],
-		[loadImage('assets/Buggerof_Follow_Front.png'), loadImage('assets/Buggerof_Follow_Left.png'), loadImage('assets/Buggerof_Follow_Right.png'), loadImage('assets/Buggerof_Follow_Back.png')],
-		[loadImage('assets/Shrude_Follow_Front.png'), loadImage('assets/Shrude_Follow_Left.png'), loadImage('assets/Shrude_Follow_Right.png'), loadImage('assets/Shrude_Follow_Back.png')],
-		[loadImage('assets/Corvicious_Follow_Front.png'), loadImage('assets/Corvicious_Follow_Left.png'), loadImage('assets/Corvicious_Follow_Right.png'), loadImage('assets/Corvicious_Follow_Back.png')],
-		[loadImage('assets/Wormse_Follow_Front.png'), loadImage('assets/Wormse_Follow_Left.png'), loadImage('assets/Wormse_Follow_Right.png'), loadImage('assets/Wormse_Follow_Back.png')],
-		[loadImage('assets/Pupamid_Follow_Front.png'), loadImage('assets/Pupamid_Follow_Left.png'), loadImage('assets/Pupamid_Follow_Right.png'), loadImage('assets/Pupamid_Follow_Back.png')],
-		[loadImage('assets/Betterfly_Follow_Front.png'), loadImage('assets/Betterfly_Follow_Left.png'), loadImage('assets/Betterfly_Follow_Right.png'), loadImage('assets/Betterfly_Follow_Back.png')],
-		[loadImage('assets/Squiddimi_Follow_Front.png'), loadImage('assets/Squiddimi_Follow_Left.png'), loadImage('assets/Squiddimi_Follow_Right.png'), loadImage('assets/Squiddimi_Follow_Back.png')],
-		[loadImage('assets/Squiddnapper_Follow_Front.png'), loadImage('assets/Squiddnapper_Follow_Left.png'), loadImage('assets/Squiddnapper_Follow_Right.png'), loadImage('assets/Squiddnapper_Follow_Back.png')],
-		[loadImage('assets/Shrimple_Follow_Front.png'), loadImage('assets/Shrimple_Follow_Left.png'), loadImage('assets/Shrimple_Follow_Right.png'), loadImage('assets/Shrimple_Follow_Back.png')],
-		[loadImage('assets/Clamplex_Follow_Front.png'), loadImage('assets/Clamplex_Follow_Left.png'), loadImage('assets/Clamplex_Follow_Right.png'), loadImage('assets/Clamplex_Follow_Back.png')],
-		[loadImage('assets/Conchfusing_Follow_Front.png'), loadImage('assets/Conchfusing_Follow_Left.png'), loadImage('assets/Conchfusing_Follow_Right.png'), loadImage('assets/Conchfusing_Follow_Back.png')],
-		[loadImage('assets/Claidmourn_Follow_Front.png'), loadImage('assets/Claidmourn_Follow_Left.png'), loadImage('assets/Claidmourn_Follow_Right.png'), loadImage('assets/Claidmourn_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Woodzar_Follow_front.png'), loadImage('braydonarmstrong.github.io/assets/Woodzar_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Woodzar_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Woodzar_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Barklock_Follow_front.png'), loadImage('braydonarmstrong.github.io/assets/Barklock_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Barklock_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Barklock_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Twiggdrasil_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Twiggdrasil_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Twiggdrasil_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Twiggdrasil_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Platypyro_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Platypyro_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Platypyro_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Platypyro_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Ignatus_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Ignatus_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Ignatus_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Ignatus_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Scorapsid_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Scorapsid_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Scorapsid_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Scorapsid_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Toadart_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Toadart_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Toadart_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Toadart_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Frogun_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Frogun_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Frogun_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Frogun_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Frogangsta_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Frogangsta_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Frogangsta_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Frogangsta_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Peckish_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Peckish_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Peckish_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Peckish_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Cooken_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Cooken_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Cooken_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Cooken_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Satisfowl_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Satisfowl_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Satisfowl_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Satisfowl_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Ajji_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Ajji_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Ajji_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Ajji_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Majji_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Majji_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Majji_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Majji_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Tarajji_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Tarajji_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Tarajji_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Tarajji_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Tailtic_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Tailtic_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Tailtic_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Tailtic_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Mowdy_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Mowdy_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Mowdy_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Mowdy_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Rodeont_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Rodeont_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Rodeont_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Rodeont_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Edgehog_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Edgehog_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Edgehog_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Edgehog_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Hedgewolf_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Hedgewolf_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Hedgewolf_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Hedgewolf_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Bugof_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Bugof_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Bugof_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Bugof_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Buzzof_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Buzzof_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Buzzof_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Buzzof_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Buggerof_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Buggerof_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Buggerof_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Buggerof_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Shrude_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Shrude_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Shrude_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Shrude_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Corvicious_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Corvicious_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Corvicious_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Corvicious_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Wormse_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Wormse_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Wormse_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Wormse_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Pupamid_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Pupamid_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Pupamid_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Pupamid_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Betterfly_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Betterfly_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Betterfly_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Betterfly_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Squiddimi_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Squiddimi_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Squiddimi_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Squiddimi_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Squiddnapper_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Squiddnapper_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Squiddnapper_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Squiddnapper_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Shrimple_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Shrimple_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Shrimple_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Shrimple_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Clamplex_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Clamplex_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Clamplex_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Clamplex_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Conchfusing_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Conchfusing_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Conchfusing_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Conchfusing_Follow_Back.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Claidmourn_Follow_Front.png'), loadImage('braydonarmstrong.github.io/assets/Claidmourn_Follow_Left.png'), loadImage('braydonarmstrong.github.io/assets/Claidmourn_Follow_Right.png'), loadImage('braydonarmstrong.github.io/assets/Claidmourn_Follow_Back.png')],
 	];
 	Player = [
-		[loadImage('assets/Player_front1.png'), loadImage('assets/Player_front2.png')],
-		[loadImage('assets/Player_left1.png'), loadImage('assets/Player_left2.png')],
-		[loadImage('assets/Player_right1.png'), loadImage('assets/Player_right2.png')],
-		[loadImage('assets/Player_back1.png'), loadImage('assets/Player_back2.png')]
+		[loadImage('braydonarmstrong.github.io/assets/Player_front1.png'), loadImage('braydonarmstrong.github.io/assets/Player_front2.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Player_left1.png'), loadImage('braydonarmstrong.github.io/assets/Player_left2.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Player_right1.png'), loadImage('braydonarmstrong.github.io/assets/Player_right2.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Player_back1.png'), loadImage('braydonarmstrong.github.io/assets/Player_back2.png')]
 	];
 	trainerImages = [
-		[loadImage('assets/Male_front1.png'), loadImage('assets/Male_left1.png'),loadImage('assets/Male_right1.png'),loadImage('assets/Male_back1.png')],
-		[loadImage('assets/Female_front1.png'), loadImage('assets/Female_left1.png'),loadImage('assets/Female_right1.png'),loadImage('assets/Female_back1.png')],
-		[loadImage('assets/GrimmOverworld.png')],
-		[loadImage('assets/PsychicOverworld.png')]
+		[loadImage('braydonarmstrong.github.io/assets/Male_front1.png'), loadImage('braydonarmstrong.github.io/assets/Male_left1.png'),loadImage('braydonarmstrong.github.io/assets/Male_right1.png'),loadImage('braydonarmstrong.github.io/assets/Male_back1.png')],
+		[loadImage('braydonarmstrong.github.io/assets/Female_front1.png'), loadImage('braydonarmstrong.github.io/assets/Female_left1.png'),loadImage('braydonarmstrong.github.io/assets/Female_right1.png'),loadImage('braydonarmstrong.github.io/assets/Female_back1.png')],
+		[loadImage('braydonarmstrong.github.io/assets/GrimmOverworld.png')],
+		[loadImage('braydonarmstrong.github.io/assets/PsychicOverworld.png')]
 	];
-	grimmBattle = loadImage('assets/GrimmBattle.png');
-	psychicBattle = loadImage('assets/Psychic.png');
-	tileset = loadJSON('assets/tiles/Tileset.tsj', loadTiles);
+	grimmBattle = loadImage('braydonarmstrong.github.io/assets/GrimmBattle.png');
+	psychicBattle = loadImage('braydonarmstrong.github.io/assets/Psychic.png');
+	tileset = loadJSON('braydonarmstrong.github.io/assets/tiles/Tileset.tsj', loadTiles);
 	//gamestate = 2;
 }
 
@@ -682,7 +682,7 @@ function loadTiles()
 {
 	for (let i = 0; i < tileset.tiles.length; i++)
 	{
-		Tiles[tileset.tiles[i].id] = 'assets/Tiles/' + (tileset.tiles[i].image);
+		Tiles[tileset.tiles[i].id] = 'braydonarmstrong.github.io/assets/Tiles/' + (tileset.tiles[i].image);
 	}
 	TileImages = new Array(Tiles.length);
 	for (let i = 0; i < Tiles.length; i++)
@@ -736,7 +736,7 @@ function loadTiles()
 			}
 		}
 	}
-	csvIN = loadStrings('assets/Map.csv', makeMap);
+	csvIN = loadStrings('braydonarmstrong.github.io/assets/Map.csv', makeMap);
 }
 satchels = []
 function makeMap()
@@ -788,10 +788,10 @@ function setup()
 	createCanvas(width, height);
 	noSmooth();
 	textFont(font);
-	battleCircle = loadImage('assets/BattleCircle.png');
-	box = loadImage('assets/Box.png');
-	BattleBox = loadImage('assets/BattleBox.png');
-	gwass = [loadImage('assets/GrassOverlay.png'),loadImage('assets/YellowGrassOverlay.png'),loadImage('assets/PinkGrassOverlay.png'),loadImage('assets/PurpleGrassOverlay.png'),loadImage('assets/GrayGrassOverlay.png')];
+	battleCircle = loadImage('braydonarmstrong.github.io/assets/BattleCircle.png');
+	box = loadImage('braydonarmstrong.github.io/assets/Box.png');
+	BattleBox = loadImage('braydonarmstrong.github.io/assets/BattleBox.png');
+	gwass = [loadImage('braydonarmstrong.github.io/assets/GrassOverlay.png'),loadImage('braydonarmstrong.github.io/assets/YellowGrassOverlay.png'),loadImage('braydonarmstrong.github.io/assets/PinkGrassOverlay.png'),loadImage('braydonarmstrong.github.io/assets/PurpleGrassOverlay.png'),loadImage('braydonarmstrong.github.io/assets/GrayGrassOverlay.png')];
 }
 
 function calcDamage(user, target, move, isFriend)
