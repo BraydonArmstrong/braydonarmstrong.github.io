@@ -12,7 +12,7 @@ Then open Monsters.js and click the Go Live button in the bottom right ![Go live
 
 Once run you can start the game as it will open in a browser being hosted locally on your machine
 
-Controls are arrow keys and z x (z confirms most actions and x backs out)
+If you cannot get it running there you can go to my [Github Page](https://braydonarmstrong.github.io)
 
 # 3. What purpose does your program serve?
 

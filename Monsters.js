@@ -825,7 +825,7 @@ Moves[start].moveType = 1;
 start++
 Moves.push(Object.create(Move));
 Moves[start].name = "Grime";
-Moves[start].type = 9;
+Moves[start].type = 5;
 Moves[start].pp = 20;
 Moves[start].damage = 20;
 
@@ -1009,6 +1009,7 @@ let TileImages = [];
 //var pixelFont = loadFont('assets/slkscr.ttf');
 function preload()
 {
+	bigSatchel = loadImage('assets/satchel.png');
 	font = loadFont("assets/PressStart2P-Regular.ttf");
 	Images = [
 		['assets/Woodzar.png', 'assets/Woodzar_back.png'],
@@ -1199,12 +1200,63 @@ function makeMap()
 
 function saveData()
 {
-	
+	localStorage.setItem("p",JSON.stringify(p));
+	localStorage.setItem("m",JSON.stringify(m));
+	localStorage.setItem("trainers",JSON.stringify(trainers));
+	for(i = 0; i < trainers.length; i++)
+	{
+		localStorage.setItem("trainers"+i,JSON.stringify(trainers[i]));
+	}
+	for(i = 0; i < 6; i++)
+	{
+		localStorage.setItem("team"+i,JSON.stringify(team[i]));
+	}
+	for(i = 0; i < 81; i++)
+	{
+		localStorage.setItem("boxes"+i,JSON.stringify(boxes[0][i]));
+	}
+	//localStorage.setItem("boxes",JSON.stringify(boxes));
+	localStorage.setItem("haskey",JSON.stringify(hasKey));
+	localStorage.setItem("inv", JSON.stringify(inventory));
+	localStorage.setItem("money", JSON.stringify(money));
+	//localStorage.setItem("map",JSON.stringify(mapS));
 }
 
 function loadData()
 {
-
+	p = JSON.parse(localStorage.getItem("p"));
+	m = JSON.parse(localStorage.getItem("m"));
+	//trainers = JSON.parse(localStorage.getItem("trainers") || "[]");
+	for(i = 0; i < trainers.length; i++)
+	{
+		//console.log(localStorage.getItem("trainers"+i));
+		if(localStorage.getItem("trainers"+i) != "undefined")
+		{
+			Object.assign(trainers[i],JSON.parse(localStorage.getItem("trainers"+i)));
+		}
+	}
+	for(i = 0; i < 6; i++)
+	{
+		//console.log(localStorage.getItem("team"+i));
+		if(localStorage.getItem("team"+i) != "undefined")
+		{
+			team[i] = JSON.parse(localStorage.getItem("team"+i));
+		}
+	}
+	for(i = 0; i < 81; i++)
+	{
+		//console.log(localStorage.getItem("team"+i));
+		if(localStorage.getItem("boxes"+i) != "undefined")
+		{
+			boxes[0][i] = JSON.parse(localStorage.getItem("boxes"+i));
+		}
+	}
+	//boxes = JSON.parse(localStorage.getItem("boxes"));
+	hasKey = JSON.parse(localStorage.getItem("haskey"));
+	inventory = JSON.parse(localStorage.getItem("inv"));
+	money = JSON.parse(localStorage.getItem("money"));
+	return p;
+	//maps = JSON.parse(localStorage.getItem("map"));
 }
 
 stats = ['attack', 'defense', 'special attack', 'special defense', 'speed'];
@@ -1398,7 +1450,7 @@ function pickMove(enemy, target, skill)
 //6 - shop
 //7 - evolving
 //8 - move choosing
-gamestate = 5;
+gamestate = 0;
 team = [];
 const Trainer = {
 	x: 0,
@@ -1413,16 +1465,19 @@ const Trainer = {
 trainers = [];
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 1;
+trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*57;
 trainers[trainers.length-1].y = 45*44;
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 0;
+trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*324;
 trainers[trainers.length-1].y = 45*123;
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 2;
+trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*84;
 trainers[trainers.length-1].y = 45*40;
@@ -1458,12 +1513,14 @@ for(i = 0; i < trainers[trainers.length-1].team[1].level; i++)
 }
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 1;
+trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*321;
 trainers[trainers.length-1].y = 45*64;
 
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 3;
+trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*46;
 trainers[trainers.length-1].y = 45*77;
@@ -1596,7 +1653,31 @@ function draw()
 	frame += 1;
 	if (gamestate == 0) //Main Menu
 	{
-
+		background(255);
+		textAlign(CENTER);
+		textSize(25);
+		text("SATCHEL CREATURES",250,50)
+		textSize(12);
+		image(bigSatchel,90,60,320,280);
+		text("Press Z to load save",250,370);
+		text("Press X to make new save",250,385);
+		textAlign(LEFT);
+		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box\nD - Dex",10,400)
+		if(keyIsDown(90))
+		{
+			check = loadData();
+			if(check != undefined && check != null)
+			{
+				gamestate = 2;
+				holding = true;
+			}
+		}
+		if(keyIsDown(88))
+		{
+			saveData()
+			gamestate = 5;
+			holding = true;
+		}
 	}
 	else if (gamestate == 1) //Dex
 	{
@@ -1695,6 +1776,7 @@ function draw()
 			gamestate = 8;
 			hasloaded = false;
 		}
+		
 		fill('white');
 		background('black');
 		for (let i = Math.ceil((p.x) / 45) - 10; i < Math.ceil((p.x) / 45) + 10; i++)
@@ -1772,7 +1854,7 @@ function draw()
 			moved = false;
 			if (!textBox)
 			{
-				if (!keyIsDown(90) && !keyIsDown(69) && !keyIsDown(68))
+				if (!keyIsDown(90) && !keyIsDown(69) && !keyIsDown(68) && !keyIsDown(83))
 				{
 					holding = false;
 				}
@@ -1791,6 +1873,13 @@ function draw()
 				if (p.dir == 3)
 				{
 					checktile = mapS[((p.x) / 45)][((p.y) / 45) - 1];
+				}
+				if(keyIsDown(83) && !holding)
+				{
+					saveData();
+					currText.push("Game was saved");
+					textBox = true;
+					holding = true;
 				}
 				if(keyIsDown(90) && !holding)
 				{

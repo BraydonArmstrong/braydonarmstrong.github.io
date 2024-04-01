@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "localforage": "^1.10.0",
     "p5js": "^1.2.18",
-    "p5play": "^3.19.9"
+    "p5play": "^3.19.9",
+    "requirejs": "^2.3.6"
   }
 }
