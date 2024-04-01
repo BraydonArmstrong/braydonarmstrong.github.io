@@ -100,6 +100,7 @@ const Move = {
 	pp: 0,
 	currpp: 0,
 	accuracy: 0,
+	dmgtype: 0,
 };
 const Tile = {
 	id: 0,
@@ -121,12 +122,13 @@ for (let i = 0; i < 34; i++)
 	Mons[i].yoff1 = 0;
 	Mons[i].yoff2 = 0;
 	Mons[i].dex = "";
-	Mons[i].moves = [0, 1, null, null];
-	Mons[i].movespp = [30, 30, null, null];
+	Mons[i].moves = [null, null, null, null];
+	Mons[i].movespp = [null, null, null, null];
 	Mons[i].type1 = 0;
 	Mons[i].type2 = 1;
 	Mons[i].level = 0;
 	Mons[i].health = 50;
+	Mons[i].learnset = new Array(100);
 	Mons[i].currhealth = Mons[i].health;
 	Mons[i].attack = 5;
 	Mons[i].defense = 5;
@@ -160,6 +162,13 @@ Mons[start].spattack = 60;
 Mons[start].spdefense = 55;
 Mons[start].speed = 55;
 Mons[start].evo = 16;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 18;
+Mons[start].learnset[8] = 2;
+Mons[start].learnset[13] = 16;
+Mons[start].learnset[18] = 12;
+Mons[start].learnset[25] = 29;
+Mons[start].learnset[33] = 25;
 start++
 Mons[start].name = "Barklock";
 Mons[start].dex = "Due to it's training when it was younger it has learned many spells and can create large blasts to scare off any would-be predators";
@@ -172,6 +181,13 @@ Mons[start].spattack = 80;
 Mons[start].spdefense = 75;
 Mons[start].speed = 70;
 Mons[start].evo = 36;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 18;
+Mons[start].learnset[8] = 2;
+Mons[start].learnset[13] = 16;
+Mons[start].learnset[18] = 12;
+Mons[start].learnset[25] = 29;
+Mons[start].learnset[33] = 25;
 start++;
 Mons[start].name = "Twiggdrasil";
 Mons[start].dex = "It has reached the highest honor in it's magical arts, being declared an archmage and knowing every spell in the books";
@@ -183,6 +199,13 @@ Mons[start].defense = 80;
 Mons[start].spattack = 120;
 Mons[start].spdefense = 90;
 Mons[start].speed = 90;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 18;
+Mons[start].learnset[8] = 2;
+Mons[start].learnset[13] = 16;
+Mons[start].learnset[18] = 12;
+Mons[start].learnset[25] = 29;
+Mons[start].learnset[33] = 25;
 start++;
 Mons[start].name = "Platypyro";
 Mons[start].dex = "Despite it's fiery appearance, Platypyro are known to use venom on those who attack it rather than immediately going for burning";
@@ -195,6 +218,13 @@ Mons[start].spattack = 30;
 Mons[start].spdefense = 70;
 Mons[start].speed = 50;
 Mons[start].evo = 16;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 1;
+Mons[start].learnset[8] = 4;
+Mons[start].learnset[13] = 5;
+Mons[start].learnset[18] = 7;
+Mons[start].learnset[25] = 20;
+Mons[start].learnset[33] = 27;
 start++;
 Mons[start].name = "Ignatus";
 Mons[start].dex = "Its become rather hot-headed, starting to develop stronger toxins but relying more on it's fiery roots";
@@ -207,6 +237,13 @@ Mons[start].spattack = 50;
 Mons[start].spdefense = 80;
 Mons[start].speed = 60;
 Mons[start].evo = 36;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 1;
+Mons[start].learnset[8] = 4;
+Mons[start].learnset[13] = 5;
+Mons[start].learnset[18] = 7;
+Mons[start].learnset[25] = 20;
+Mons[start].learnset[33] = 27;
 start++;
 Mons[start].name = "Scorapsid";
 Mons[start].dex = "Master of both poison and flame, obliterating any opponents who would dare to stand in its path";
@@ -218,6 +255,13 @@ Mons[start].defense = 100;
 Mons[start].spattack = 75;
 Mons[start].spdefense = 100;
 Mons[start].speed = 70;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 1;
+Mons[start].learnset[8] = 4;
+Mons[start].learnset[13] = 5;
+Mons[start].learnset[18] = 7;
+Mons[start].learnset[25] = 20;
+Mons[start].learnset[33] = 27;
 start++;
 Mons[start].name = "Toadart";
 Mons[start].dex = "Despite the large cannon mounted on their back, they are actually quite peaceful creatures.";
@@ -230,6 +274,13 @@ Mons[start].spattack = 40;
 Mons[start].spdefense = 50;
 Mons[start].speed = 65;
 Mons[start].evo = 16;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 3;
+Mons[start].learnset[13] = 10;
+Mons[start].learnset[18] = 13;
+Mons[start].learnset[25] = 22;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Frogun";
 Mons[start].dex = "Slowly growing less passive towards others it has grown a second cannon along with an overall stronger body.";
@@ -242,6 +293,13 @@ Mons[start].spattack = 60;
 Mons[start].spdefense = 54;
 Mons[start].speed = 75;
 Mons[start].evo = 32;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 3;
+Mons[start].learnset[13] = 10;
+Mons[start].learnset[18] = 13;
+Mons[start].learnset[25] = 22;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Frogangsta";
 Mons[start].dex = "It has grown hostile after being exposed to many acts of violence. Ditching its cannons on its back for a single super powered blaster.";
@@ -253,6 +311,13 @@ Mons[start].defense = 87;
 Mons[start].spattack = 70;
 Mons[start].spdefense = 63;
 Mons[start].speed = 100;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 3;
+Mons[start].learnset[13] = 10;
+Mons[start].learnset[18] = 13;
+Mons[start].learnset[25] = 22;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Peckish";
 Mons[start].dex = "Peckish struggle to find food, usually staying in packs to possibly survive with a Cooken to help them.";
@@ -265,6 +330,12 @@ Mons[start].spattack = 31;
 Mons[start].spdefense = 40;
 Mons[start].speed = 60;
 Mons[start].evo = 18;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 19;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 26;
+Mons[start].learnset[33] = 20;
 start++;
 Mons[start].name = "Cooken";
 Mons[start].dex = "As they struggled to find food in their youth, they learned how to procure good food to aid.";
@@ -277,6 +348,12 @@ Mons[start].spattack = 34;
 Mons[start].spdefense = 50;
 Mons[start].speed = 90;
 Mons[start].evo = 36;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 19;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 26;
+Mons[start].learnset[33] = 20;
 start++;
 Mons[start].name = "Satisfowl";
 Mons[start].dex = "Learning to cook drove them to eat more and more, not knowing their own limits.";
@@ -288,6 +365,12 @@ Mons[start].defense = 80;
 Mons[start].spattack = 69;
 Mons[start].spdefense = 80;
 Mons[start].speed = 70;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 19;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 26;
+Mons[start].learnset[33] = 20;
 start++;
 Mons[start].name = "Ajji";
 Mons[start].dex = "A small rabbit that found a tophat, It decided to practice magic, entertaining others by pulling itself out of the hat";
@@ -300,6 +383,12 @@ Mons[start].spattack = 70;
 Mons[start].spdefense = 40;
 Mons[start].speed = 65;
 Mons[start].evo = 16;
+Mons[start].learnset[1] = 12;
+Mons[start].learnset[2] = 16;
+Mons[start].learnset[8] = 10;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 24;
+Mons[start].learnset[33] = 25;
 start++;
 Mons[start].name = "Majji";
 Mons[start].dex = "As it has grown it is harder to hide within the hat for it's tricks. It has now started learning more tricks not involving itself";
@@ -312,6 +401,12 @@ Mons[start].spattack = 95;
 Mons[start].spdefense = 50;
 Mons[start].speed = 85;
 Mons[start].evo = 30;
+Mons[start].learnset[1] = 12;
+Mons[start].learnset[2] = 16;
+Mons[start].learnset[8] = 10;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 24;
+Mons[start].learnset[33] = 25;
 start++;
 Mons[start].name = "Tarajji";
 Mons[start].dex = "It has much outgrown it's hat so it now decides to wear it. Sometimes will use other Ajji's in it's magic routines";
@@ -323,6 +418,12 @@ Mons[start].defense = 55;
 Mons[start].spattack = 140;
 Mons[start].spdefense = 45;
 Mons[start].speed = 115;
+Mons[start].learnset[1] = 12;
+Mons[start].learnset[2] = 16;
+Mons[start].learnset[8] = 10;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 24;
+Mons[start].learnset[33] = 25;
 start++;
 Mons[start].name = "Tailtic";
 Mons[start].dex = "A very calm monster, it's hair sticks up due to a large amount of static electricity built up, it can discharge the electricity from it's tails";
@@ -334,6 +435,12 @@ Mons[start].defense = 65;
 Mons[start].spattack = 90;
 Mons[start].spdefense = 70;
 Mons[start].speed = 90;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 6;
+Mons[start].learnset[8] = 9;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 21;
+Mons[start].learnset[33] = 16;
 start++;
 Mons[start].name = "Mowdy";
 Mons[start].dex = "Without arms, Mowdy use their tails to grab things out of reach of their mouth. They like to nibble on wheat.";
@@ -347,6 +454,11 @@ Mons[start].spattack = 25;
 Mons[start].spdefense = 30;
 Mons[start].speed = 60;
 Mons[start].evo = 20;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 8;
+Mons[start].learnset[8] = 9;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Rodeont";
 Mons[start].dex = "They like to capture monsters with their tail who they deem as lawbreakers. Their sense of justice is very skewed.";
@@ -359,6 +471,11 @@ Mons[start].defense = 60;
 Mons[start].spattack = 55;
 Mons[start].spdefense = 55;
 Mons[start].speed = 90;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 8;
+Mons[start].learnset[8] = 9;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Edgehog";
 Mons[start].dex = "A very defensive and selfish monster, it likes to manufacture weaponry but it does not fully understand how they function so it is not seen as much of a threat.";
@@ -371,6 +488,12 @@ Mons[start].spattack = 30;
 Mons[start].spdefense = 55;
 Mons[start].speed = 60;
 Mons[start].evo = 22;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 0;
+Mons[start].learnset[15] = 17;
+Mons[start].learnset[25] = 14
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Hedgewolf";
 Mons[start].dex = "Trading it's defense for more offensive ability, it has unleashed it's true potential. It no longer needs to forge weapons as it's fists are durable";
@@ -382,6 +505,12 @@ Mons[start].defense = 70;
 Mons[start].spattack = 40;
 Mons[start].spdefense = 70;
 Mons[start].speed = 90;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 15;
+Mons[start].learnset[8] = 0;
+Mons[start].learnset[15] = 17;
+Mons[start].learnset[25] = 14
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Bugof";
 Mons[start].dex = "Bugof are not fond of human interaction, they fly away as fast as they can just to avoid it.";
@@ -394,6 +523,11 @@ Mons[start].spattack = 25;
 Mons[start].spdefense = 25;
 Mons[start].speed = 65;
 Mons[start].evo = 7;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[2] = 8;
+Mons[start].learnset[8] = 6;
+Mons[start].learnset[15] = 15;
+Mons[start].learnset[25] = 24;
 start++;
 Mons[start].name = "Buzzof";
 Mons[start].dex = "Buzzof are starting to get fed up with people. Always trying to force themselves to it.";
@@ -406,6 +540,11 @@ Mons[start].spattack = 25;
 Mons[start].spdefense = 25;
 Mons[start].speed = 65;
 Mons[start].evo = 12;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[2] = 8;
+Mons[start].learnset[8] = 6;
+Mons[start].learnset[15] = 15;
+Mons[start].learnset[25] = 24;
 start++;
 Mons[start].name = "Buggerof";
 Mons[start].dex = "After too many people pestered them they have grown a spike to fend off any annoyances.";
@@ -417,6 +556,11 @@ Mons[start].defense = 60;
 Mons[start].spattack = 45;
 Mons[start].spdefense = 60;
 Mons[start].speed = 75;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[2] = 8;
+Mons[start].learnset[8] = 6;
+Mons[start].learnset[15] = 15;
+Mons[start].learnset[25] = 24;
 start++;
 Mons[start].name = "Shrude";
 Mons[start].dex = "Although it may not have eyes it can see quite well, it was thought to have spread disease in the olden days";
@@ -429,6 +573,12 @@ Mons[start].spattack = 60;
 Mons[start].spdefense = 33;
 Mons[start].speed = 60;
 Mons[start].evo = 22;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 1;
+Mons[start].learnset[8] = 15;
+Mons[start].learnset[15] = 17;
+Mons[start].learnset[25] = 14
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Corvicious";
 Mons[start].dex = "Can create shadowy branches in which to perch on to stalk its prey, it emits an eerie tune that can alert things of it's presence";
@@ -440,6 +590,12 @@ Mons[start].defense = 66;
 Mons[start].spattack = 100;
 Mons[start].spdefense = 66;
 Mons[start].speed = 90;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 1;
+Mons[start].learnset[8] = 15;
+Mons[start].learnset[15] = 17;
+Mons[start].learnset[25] = 14;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Wormse";
 Mons[start].dex = "Frankly horrible at everything it attempts to do, it cannot amount to much offense or defense so not very suitable for combat";
@@ -452,6 +608,11 @@ Mons[start].spattack = 20;
 Mons[start].spdefense = 20;
 Mons[start].speed = 95;
 Mons[start].evo = 7;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[7] = 5;
+Mons[start].learnset[10] = 24;
+Mons[start].learnset[14] = 27;
+Mons[start].learnset[20] = 29;
 start++;
 Mons[start].name = "Pupamid";
 Mons[start].dex = "It's grown a sadness for being unable to do anything it strives to do. It has formed a shell around itself so that it may atleast have some benefit in combat";
@@ -464,6 +625,11 @@ Mons[start].spattack = 25;
 Mons[start].spdefense = 60;
 Mons[start].speed = 20;
 Mons[start].evo = 10;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[7] = 5;
+Mons[start].learnset[10] = 24;
+Mons[start].learnset[14] = 27;
+Mons[start].learnset[20] = 29;
 start++;
 Mons[start].name = "Betterfly";
 Mons[start].dex = "It has achieved perfection, through all of it's hardships it has achieved peak condition. It took it's pain in strides and now continues to grow stronger.";
@@ -475,6 +641,11 @@ Mons[start].defense = 65;
 Mons[start].spattack = 90;
 Mons[start].spdefense = 65;
 Mons[start].speed = 65;
+Mons[start].learnset[1] = 14;
+Mons[start].learnset[7] = 5;
+Mons[start].learnset[10] = 24;
+Mons[start].learnset[14] = 27;
+Mons[start].learnset[20] = 29;
 start++;
 Mons[start].name = "Squiddimi";
 Mons[start].dex = "Quite the prankster, they are known for pulling minor tricks to get a ruse out of people nearby";
@@ -487,6 +658,12 @@ Mons[start].spattack = 68;
 Mons[start].spdefense = 48;
 Mons[start].speed = 58;
 Mons[start].evo = 20;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 10;
+Mons[start].learnset[8] = 3;
+Mons[start].learnset[15] = 7;
+Mons[start].learnset[25] = 22;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Squiddnapper";
 Mons[start].dex = "As people stopped enjoying it's pranks, it upped the ante by commiting crimes instead, as it found that got more of a rise out of people";
@@ -498,6 +675,12 @@ Mons[start].defense = 78;
 Mons[start].spattack = 88;
 Mons[start].spdefense = 78;
 Mons[start].speed = 88;
+Mons[start].learnset[1] = 13;
+Mons[start].learnset[2] = 10;
+Mons[start].learnset[8] = 3;
+Mons[start].learnset[15] = 7;
+Mons[start].learnset[25] = 22;
+Mons[start].learnset[33] = 23;
 start++;
 Mons[start].name = "Shrimple";
 Mons[start].dex = "Does not think of much, dwells in caves just relaxing and not doing anything in specific";
@@ -510,6 +693,12 @@ Mons[start].spattack = 45;
 Mons[start].spdefense = 50;
 Mons[start].speed = 35;
 Mons[start].evo = 20;
+Mons[start].learnset[1] = 11;
+Mons[start].learnset[2] = 5;
+Mons[start].learnset[10] = 16;
+Mons[start].learnset[21] = 12;
+Mons[start].learnset[34] = 28;
+Mons[start].learnset[45] = 25;
 start++;
 Mons[start].name = "Clamplex";
 Mons[start].dex = "Its brain has grown much larger, and it can now control things using nothing but it's many thoughts";
@@ -522,6 +711,12 @@ Mons[start].spattack = 65;
 Mons[start].spdefense = 60;
 Mons[start].speed = 45;
 Mons[start].evo = 40;
+Mons[start].learnset[1] = 11;
+Mons[start].learnset[2] = 5;
+Mons[start].learnset[10] = 16;
+Mons[start].learnset[21] = 12;
+Mons[start].learnset[34] = 28;
+Mons[start].learnset[45] = 25;
 start++;
 Mons[start].name = "Conchfusing";
 Mons[start].dex = "As it's head grew more and more it found a shell to hide it's frail body within. Much more defensive and powerful than it's predecessor";
@@ -533,6 +728,12 @@ Mons[start].defense = 95;
 Mons[start].spattack = 60;
 Mons[start].spdefense = 85;
 Mons[start].speed = 50;
+Mons[start].learnset[1] = 11;
+Mons[start].learnset[2] = 5;
+Mons[start].learnset[10] = 16;
+Mons[start].learnset[21] = 12;
+Mons[start].learnset[34] = 28;
+Mons[start].learnset[45] = 25;
 start++;
 Mons[start].name = "Claidmourn";
 Mons[start].dex = "Likes to trap people within itself. It catches people off guard by sneaking behind them and once inside it splits in half, surprisingly the captive is unharmed";
@@ -544,6 +745,12 @@ Mons[start].defense = 105;
 Mons[start].spattack = 50;
 Mons[start].spdefense = 115;
 Mons[start].speed = 40;
+Mons[start].learnset[1] = 12;
+Mons[start].learnset[2] = 16;
+Mons[start].learnset[8] = 10;
+Mons[start].learnset[15] = 4;
+Mons[start].learnset[25] = 24;
+Mons[start].learnset[33] = 25;
 Moves = [];
 /*
  * 0 Normal
@@ -557,29 +764,246 @@ Moves = [];
  * 8 Bug
  * 9 Dark
  */
+
 start = 0;
 Moves.push(Object.create(Move));
-Moves[start].name = "Peck";
+Moves[start].name = "Punch";
 Moves[start].type = 0;
-Moves[start].pp = 30;
+Moves[start].pp = 35;
 Moves[start].damage = 35;
-Moves[start].moveType = 0;
+
 start++
 Moves.push(Object.create(Move));
-Moves[start].name = "Scream";
+Moves[start].name = "Roar";
 Moves[start].type = 0;
-Moves[start].pp = 30;
+Moves[start].pp = 40;
 Moves[start].damage = 0;
 Moves[start].effect = 1;
 Moves[start].moveType = 1;
+
 start++;
 Moves.push(Object.create(Move));
 Moves[start].name = "Leaf Thrw";
 Moves[start].type = 3;
 Moves[start].pp = 25;
 Moves[start].damage = 35;
-Moves[start].effect = 0;
+
+start++;
+Moves.push(Object.create(Move));
+Moves[start].name = "Squirt";
+Moves[start].type = 2;
+Moves[start].pp = 30;
+Moves[start].damage = 20;
+Moves[start].dmgtype = 1;
+
+start++;
+Moves.push(Object.create(Move));
+Moves[start].name = "Burn";
+Moves[start].type = 1;
+Moves[start].pp = 25;
+Moves[start].damage = 40;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Stiffen";
+Moves[start].type = 6;
+Moves[start].pp = 30;
+Moves[start].damage = 0;
+Moves[start].effect = 7;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Charge";
+Moves[start].type = 4;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 10;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Grime";
+Moves[start].type = 9;
+Moves[start].pp = 20;
+Moves[start].damage = 20;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Wrap";
+Moves[start].type = 8;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 5;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Zap";
+Moves[start].type = 4;
+Moves[start].pp = 30;
+Moves[start].damage = 40;
 Moves[start].moveType = 0;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Bubble";
+Moves[start].type = 2;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 9;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Dig";
+Moves[start].type = 6;
+Moves[start].pp = 20;
+Moves[start].damage = 35;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Mind Blow";
+Moves[start].type = 7;
+Moves[start].pp = 25;
+Moves[start].damage = 40;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Mug";
+Moves[start].type = 9;
+Moves[start].pp = 20;
+Moves[start].damage = 45;
+
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Sting";
+Moves[start].type = 8;
+Moves[start].pp = 30;
+Moves[start].damage = 35;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Weak Spot";
+Moves[start].type = 9;
+Moves[start].pp = 30;
+Moves[start].damage = 0;
+Moves[start].effect = 2;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Study";
+Moves[start].type = 7;
+Moves[start].pp = 30;
+Moves[start].damage = 0;
+Moves[start].effect = 8;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Pollute";
+Moves[start].type = 5;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 4;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Drain";
+Moves[start].type = 3;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 3;
+Moves[start].moveType = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Warmth";
+Moves[start].type = 1;
+Moves[start].pp = 40;
+Moves[start].damage = 0;
+Moves[start].effect = 6;
+Moves[start].moveType = 1;
+
+start++;
+Moves.push(Object.create(Move));
+Moves[start].name = "Scorch";
+Moves[start].type = 1;
+Moves[start].pp = 15;
+Moves[start].damage = 60;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Lightning";
+Moves[start].type = 4;
+Moves[start].pp = 10;
+Moves[start].damage = 70;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Geyser";
+Moves[start].type = 2;
+Moves[start].pp = 20;
+Moves[start].damage = 55;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Shoot";
+Moves[start].type = 9;
+Moves[start].pp = 5;
+Moves[start].damage = 100
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Bite";
+Moves[start].type = 8;
+Moves[start].pp = 20;
+Moves[start].damage = 60;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Spoon Bnd";
+Moves[start].type = 7;
+Moves[start].pp = 15;
+Moves[start].damage = 65;
+Moves[start].dmgtype = 1;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Smack";
+Moves[start].type = 0;
+Moves[start].pp = 20;
+Moves[start].damage = 60;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Spew";
+Moves[start].type = 5;
+Moves[start].pp = 15;
+Moves[start].damage = 65;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Drill";
+Moves[start].type = 6;
+Moves[start].pp = 10;
+Moves[start].damage = 70;
+
+start++
+Moves.push(Object.create(Move));
+Moves[start].name = "Thrn Whip";
+Moves[start].type = 6;
+Moves[start].pp = 10;
+Moves[start].damage = 70;
+
 let tileset;
 let TileImages = [];
 //var pixelFont = loadFont('assets/slkscr.ttf');
@@ -783,6 +1207,8 @@ function loadData()
 
 }
 
+stats = ['attack', 'defense', 'special attack', 'special defense', 'speed'];
+
 function setup()
 {
 	frameRate(30);
@@ -803,19 +1229,43 @@ function calcDamage(user, target, move, isFriend)
 	atk = 1;
 	if(isFriend)
 	{
-		if(friendStats[0] > 0)
+		if(move.dmgtype == 0)
 		{
-			atk = (user.attack * (2 + friendStats[0]))/2;
+			if(friendStats[0] > 0)
+			{
+				atk = (user.attack * (2 + friendStats[0]))/2;
+			}else
+			{
+				atk = (user.attack * 2)/(2 - friendStats[0]);
+			}
 		}else
 		{
-			atk = (user.attack * 2)/(2 - friendStats[0]);
+			if(friendStats[2] > 0)
+			{
+				atk = (user.spattack * (2 + friendStats[2]))/2;
+			}else
+			{
+				atk = (user.spattack * 2)/(2 - friendStats[2]);
+			}
 		}
-		if(enemyStats[1] > 0)
+		if(move.dmgtype == 0)
 		{
-			def = (target.defense * (2 + enemyStats[1]))/2;
+			if(enemyStats[1] > 0)
+			{
+				def = (target.defense * (2 + enemyStats[1]))/2;
+			}else
+			{
+				def = (target.defense * 2)/(2 - enemyStats[1]);
+			}
 		}else
 		{
-			def = (target.defense * 2)/(2 - enemyStats[1]);
+			if(enemyStats[3] > 0)
+			{
+				def = (target.spdefense * (2 + enemyStats[3]))/2;
+			}else
+			{
+				def = (target.spdefense * 2)/(2 - enemyStats[3]);
+			}
 		}
 		if(friendStats[4] > 0)
 		{
@@ -826,19 +1276,43 @@ function calcDamage(user, target, move, isFriend)
 		}
 	}else
 	{
-		if(enemyStats[0] > 0)
+		if(move.dmgtype == 0)
 		{
-			atk = (user.attack * (2 + enemyStats[0]))/2;
+			if(enemyStats[0] > 0)
+			{
+				atk = (user.attack * (2 + enemyStats[0]))/2;
+			}else
+			{
+				atk = (user.attack * 2)/(2 - enemyStats[0]);
+			}
 		}else
 		{
-			atk = (user.attack * 2)/(2 - enemyStats[0]);
+			if(enemyStats[2] > 0)
+			{
+				atk = (user.spattack * (2 + enemyStats[2]))/2;
+			}else
+			{
+				atk = (user.spattack * 2)/(2 - enemyStats[2]);
+			}
 		}
-		if(friendStats[1] > 0)
+		if(move.dmgtype == 0)
 		{
-			def = (target.defense * (2 + friendStats[1]))/2;
+			if(friendStats[1] > 0)
+			{
+				def = (target.defense * (2 + friendStats[1]))/2;
+			}else
+			{
+				def = (target.defense * 2)/(2 - friendStats[1]);
+			}
 		}else
 		{
-			def = (target.defense * 2)/(2 - friendStats[1]);
+			if(friendStats[3] > 0)
+			{
+				def = (target.spdefense * (2 + friendStats[3]))/2;
+			}else
+			{
+				def = (target.spdefense * 2)/(2 - friendStats[3]);
+			}
 		}
 		if(enemyStats[4] > 0)
 		{
@@ -954,15 +1428,34 @@ trainers[trainers.length-1].x = 45*84;
 trainers[trainers.length-1].y = 45*40;
 trainers[trainers.length-1].team[0] = Object.create(Monster);
 Object.assign(trainers[trainers.length-1].team[0], Mons[18])
-trainers[trainers.length-1].team[0].level = 1;
+trainers[trainers.length-1].team[0].level = 10;
 trainers[trainers.length-1].team[0].calcStats();
 trainers[trainers.length-1].team[0].currhealth = trainers[trainers.length-1].team[0].health;
 trainers[trainers.length-1].team[1] = Object.create(Monster);
+currMove = 0;
+for(i = 0; i < trainers[trainers.length-1].team[0].level; i++)
+{
+	if(trainers[trainers.length-1].team[0].learnset[i] != null)
+	{
+		trainers[trainers.length-1].team[0].moves[currMove] = trainers[trainers.length-1].team[0].learnset[i];
+		trainers[trainers.length-1].team[0].movespp[currMove] = Moves[trainers[trainers.length-1].team[0].learnset[i]].pp;
+		currMove = (currMove + 1) % 4;
+	}
+}
 Object.assign(trainers[trainers.length-1].team[1], Mons[23])
-trainers[trainers.length-1].team[1].level = 1;
+trainers[trainers.length-1].team[1].level = 11;
 trainers[trainers.length-1].team[1].calcStats();
 trainers[trainers.length-1].team[1].currhealth = trainers[trainers.length-1].team[1].health;
-
+currMove = 0;
+for(i = 0; i < trainers[trainers.length-1].team[1].level; i++)
+{
+	if(trainers[trainers.length-1].team[1].learnset[i] != null)
+	{
+		trainers[trainers.length-1].team[1].moves[currMove] = trainers[trainers.length-1].team[1].learnset[i];
+		trainers[trainers.length-1].team[1].movespp[currMove] = Moves[trainers[trainers.length-1].team[1].learnset[i]].pp;
+		currMove = (currMove + 1) % 4;
+	}
+}
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 1;
 trainers[trainers.length-1].fightable = false;
@@ -991,7 +1484,7 @@ let loc = 0;
 spawnList = [
 	[9,16,25], //Green
 	[18,26,23,0], //Yellow
-	[12,10,27,3], //Pink
+	[12,10,27,3, 15, 34], //Pink
 	[20,28], //Purple
 	[31,16,28,6] //Gray
 ];
@@ -1036,14 +1529,6 @@ currText = [];
 typeNames = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Poison', 'Ground', 'Psychic', 'Bug', 'Dark'];
 typeColors = ['gray', 'darkorange', 'blue', 'green', 'goldenrod', 'purple', 'brown', 'darkorchid', 'darkseagreen', 'darkslateblue'];
 boxes = Array.from(Array(9), () => new Array(81));
-for(i = 0; i < 34; i++)
-{
-	boxes[0][i] = Object.create(Monster);
-	Object.assign(boxes[0][i], Mons[i]);
-	boxes[0][i].level = 5;
-	boxes[0][i].calcStats();
-	boxes[0][i].currhealth = boxes[0][i].health;
-}
 teamParticipated = [];
 for(i = 0; i < team.length; i++)
 {
@@ -1366,6 +1851,7 @@ function draw()
 								currText.push("Good luck kid");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
+								teamIndex = 0;
 								battlemenu = 2;
 								hasloaded = false;
 								numEnemies = 2;
@@ -1516,9 +2002,20 @@ function draw()
 								enemy[0].calcStats();
 								enemy[0].currhealth = enemy[0].health;
 								numEnemies = 1;
+								teamIndex = 0;
 								fightDone = false;
 								hasloaded = false;
 								holding = true;
+								currMove = 0;
+								for(i = 0; i < enemy[0].level; i++)
+								{
+									if(enemy[0].learnset[i] != null)
+									{
+										enemy[0].moves[currMove] = enemy[0].learnset[i];
+										enemy[0].movespp[currMove] = Moves[enemy[0].learnset[i]].pp;
+										currMove = (currMove + 1) % 4;
+									}
+								}
 							}
 						}
 						else
@@ -1865,12 +2362,12 @@ function draw()
 							{
 								if(isTrainer)
 								{
-									team[i].currxp += Math.floor(Math.floor((192 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
-									currText.push(team[i].name + " has gained " + Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5) + " experience" );
+									team[i].currxp += Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
+									currText.push(team[i].name + " has gained " + Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5) + " experience" );
 								}else
 								{
-									team[i].currxp += Math.floor(Math.floor((192 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
-									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((64 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
+									team[i].currxp += Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
+									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
 								}
 								
 								while(team[i].currxp > team[teamIndex].xp)
@@ -2019,35 +2516,35 @@ function draw()
 		}
 		else if (battlemenu == 1)
 		{
-			text(">", 215 + (option % 2) * 140, 440 + Math.floor(option / 2) * 40);
+			text(">", 185 + (option % 2) * 140, 440 + Math.floor(option / 2) * 40);
 			fill(typeColors[Moves[team[teamIndex].moves[0]].type]);
-			text(Moves[team[teamIndex].moves[0]].name, 230, 440);
+			text(Moves[team[teamIndex].moves[0]].name, 200, 440);
 			if (team[teamIndex].moves[2] == null)
 			{
 				fill('black');
-				text("-", 270, 480);
+				text("-", 200, 480);
 			}else
 			{
 				fill(typeColors[Moves[team[teamIndex].moves[2]].type]);
-				text(Moves[team[teamIndex].moves[2]].name, 230, 480);
+				text(Moves[team[teamIndex].moves[2]].name, 200, 480);
 			}
 			if (team[teamIndex].moves[1] == null)
 			{
 				fill('black');
-				text("-", 370, 440);
+				text("-", 350, 440);
 			}else
 			{
 				fill(typeColors[Moves[team[teamIndex].moves[1]].type]);
-				text(Moves[team[teamIndex].moves[1]].name, 370, 440);
+				text(Moves[team[teamIndex].moves[1]].name, 350, 440);
 			}
 			if (team[teamIndex].moves[3] == null)
 			{
 				fill('black');
-				text("-", 370, 480);
+				text("-", 350, 480);
 			}else
 			{
 				fill(typeColors[Moves[team[teamIndex].moves[3]].type]);
-				text(Moves[team[teamIndex].moves[3]].name, 370, 480);
+				text(Moves[team[teamIndex].moves[3]].name, 350, 480);
 			}
 			fill('black');
 			if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
@@ -2107,12 +2604,15 @@ function draw()
 						{
 							currText.push("It was not very effective");
 						}
-					
 					}
-					if((Moves[team[teamIndex].moves[option]].effect == 1))
+					if((Moves[team[teamIndex].moves[option]].effect <= 5 && Moves[team[teamIndex].moves[option]].effect > 0))
 					{
-						enemyStats[0] = max(-6,enemyStats[0]-1) 
-						//console.log(enemyStats);
+						enemyStats[Moves[team[teamIndex].moves[option]].effect-1] = max(-6,enemyStats[Moves[team[teamIndex].moves[option]].effect-1]-1) 
+						currText.push(enemy[enemyIndex].name + " had it's " + stats[Moves[team[teamIndex].moves[option]].effect-1] + " lowered.");
+					}else if(Moves[team[teamIndex].moves[option]].effect > 5)
+					{
+						friendStats[Moves[team[teamIndex].moves[option]].effect-6] = min(6,friendStats[Moves[team[teamIndex].moves[option]].effect-6]+1) 
+						currText.push(team[teamIndex].name + " had it's " + stats[Moves[team[teamIndex].moves[option]].effect-6] + " raised.");
 					}
 					holding = true;
 					if (enemy[enemyIndex].currhealth <= 0) 
@@ -2141,10 +2641,14 @@ function draw()
 								currText.push("It was not very effective");
 							}
 						}
-						if(Moves[enemy[enemyIndex].moves[picked]].effect == 1)
+						if((Moves[enemy[enemyIndex].moves[picked]].effect <= 5 &&Moves[enemy[enemyIndex].moves[picked]].effect > 0))
 						{
-							friendStats[0] = max(-6,friendStats[0]-1) 
-							//console.log(friendStats);
+							friendStats[Moves[enemy[enemyIndex].moves[picked]].effect-1] = max(-6,friendStats[Moves[enemy[enemyIndex].moves[picked]].effect-1]-1) 
+							currText.push(team[teamIndex].name + " had it's " + stats[Moves[enemy[enemyIndex].moves[picked]].effect-1] + " lowered.");
+						}else if(Moves[enemy[enemyIndex].moves[picked]].effect > 5)
+						{
+							enemyStats[Moves[enemy[enemyIndex].moves[picked]].effect-6] = min(6,enemyStats[Moves[enemy[enemyIndex].moves[picked]].effect-6]+1) 
+							currText.push(enemy[enemyIndex].name + " had it's " + stats[Moves[enemy[enemyIndex].moves[picked]].effect-6] + " raised.");
 						}
 						if (team[teamIndex].currhealth <= 0) 
 						{
@@ -2177,10 +2681,14 @@ function draw()
 							currText.push("It was not very effective");
 						}
 					}
-					if(Moves[enemy[enemyIndex].moves[picked]].effect == 1)
+					if((Moves[enemy[enemyIndex].moves[picked]].effect <= 5 &&Moves[enemy[enemyIndex].moves[picked]].effect > 0))
 					{
-						friendStats[0] = max(-6,friendStats[0]-1) 
-						//console.log(friendStats);
+						friendStats[Moves[enemy[enemyIndex].moves[picked]].effect-1] = max(-6,friendStats[Moves[enemy[enemyIndex].moves[picked]].effect-1]-1) 
+						currText.push(team[teamIndex].name + " had it's " + stats[Moves[enemy[enemyIndex].moves[picked]].effect-1] + " lowered.");
+					}else if(Moves[enemy[enemyIndex].moves[picked]].effect > 5)
+					{
+						enemyStats[Moves[enemy[enemyIndex].moves[picked]].effect-6] = min(6,enemyStats[Moves[enemy[enemyIndex].moves[picked]].effect-6]+1) 
+						currText.push(enemy[enemyIndex].name + " had it's " + stats[Moves[enemy[enemyIndex].moves[picked]].effect-6] + " raised.");
 					}
 					if (team[teamIndex].currhealth <= 0) 
 					{
@@ -2209,10 +2717,14 @@ function draw()
 								currText.push("It was not very effective");
 							}
 						}
-						if((Moves[team[teamIndex].moves[option]].effect == 1))
+						if((Moves[team[teamIndex].moves[option]].effect <= 5 && Moves[team[teamIndex].moves[option]].effect > 0))
 						{
-							enemyStats[0] = max(-6,enemyStats[0]-1) 
-							//console.log(enemyStats);
+							enemyStats[Moves[team[teamIndex].moves[option]].effect-1] = max(-6,enemyStats[Moves[team[teamIndex].moves[option]].effect-1]-1) 
+							currText.push(enemy[enemyIndex].name + " had it's " + stats[Moves[team[teamIndex].moves[option]].effect-1] + " lowered.");
+						}else if(Moves[team[teamIndex].moves[option]].effect > 5)
+						{
+							friendStats[Moves[team[teamIndex].moves[option]].effect-6] = min(6,friendStats[Moves[team[teamIndex].moves[option]].effect-6]+1) 
+							currText.push(team[teamIndex].name + " had it's " + stats[Moves[team[teamIndex].moves[option]].effect-6] + " raised.");
 						}
 						if (enemy[enemyIndex].currhealth < 0) 
 						{
@@ -2844,10 +3356,20 @@ function draw()
 			team[0] = Object.create(Monster);
 			Object.assign(team[0], Mons[starterChoice*3]);
 			team[0].level = 5;
-			team[0].moves[2] = 2;
+			//team[0].moves[2] = 2;
 			team[0].movespp[2] = 25;
 			team[0].calcStats();
 			team[0].currhealth = team[0].health;
+			currMove = 0;
+			for(i = 0; i < team[0].level; i++)
+			{
+				if(team[0].learnset[i] != null)
+				{
+					team[0].moves[currMove] = team[0].learnset[i];
+					team[0].movespp[currMove] = Moves[team[0].learnset[i]].pp;
+					currMove = (currMove + 1) % 4;
+				}
+			}
 			gamestate = 2;
 			//team[0].learnset[5] = 1;
 			//canLearn.push(0);
