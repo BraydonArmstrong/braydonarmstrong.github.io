@@ -692,7 +692,7 @@ Mons[start].defense = 50;
 Mons[start].spattack = 45;
 Mons[start].spdefense = 50;
 Mons[start].speed = 35;
-Mons[start].evo = 20;
+Mons[start].evo = 15;
 Mons[start].learnset[1] = 11;
 Mons[start].learnset[2] = 5;
 Mons[start].learnset[10] = 16;
@@ -710,7 +710,7 @@ Mons[start].defense = 60;
 Mons[start].spattack = 65;
 Mons[start].spdefense = 60;
 Mons[start].speed = 45;
-Mons[start].evo = 40;
+Mons[start].evo = 38;
 Mons[start].learnset[1] = 11;
 Mons[start].learnset[2] = 5;
 Mons[start].learnset[10] = 16;
@@ -1219,6 +1219,7 @@ function saveData()
 	localStorage.setItem("haskey",JSON.stringify(hasKey));
 	localStorage.setItem("inv", JSON.stringify(inventory));
 	localStorage.setItem("money", JSON.stringify(money));
+	localStorage.setItem("dooropen", JSON.stringify(doorOpen));
 	//localStorage.setItem("map",JSON.stringify(mapS));
 }
 
@@ -1264,6 +1265,7 @@ function loadData()
 	hasKey = JSON.parse(localStorage.getItem("haskey"));
 	inventory = JSON.parse(localStorage.getItem("inv"));
 	money = JSON.parse(localStorage.getItem("money"));
+	doorOpen = JSON.parse(localStorage.getItem("dooropen"));
 	return p;
 	//maps = JSON.parse(localStorage.getItem("map"));
 }
@@ -1471,19 +1473,25 @@ const Trainer = {
 	fightable: true,
 	dir: 0,
 };
+
 trainers = [];
+//Pokemon Center
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 1;
 trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*57;
 trainers[trainers.length-1].y = 45*44;
+
+//Outside Cave
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 0;
 trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*324;
 trainers[trainers.length-1].y = 45*123;
+
+//Grimm
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 2;
 trainers[trainers.length-1].dir = 0;
@@ -1520,6 +1528,8 @@ for(i = 0; i < trainers[trainers.length-1].team[1].level; i++)
 		currMove = (currMove + 1) % 4;
 	}
 }
+
+//Outside Building
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 1;
 trainers[trainers.length-1].dir = 0;
@@ -1527,13 +1537,58 @@ trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*321;
 trainers[trainers.length-1].y = 45*64;
 
+//Cecilia
 trainers.push(Object.create(Trainer));
 trainers[trainers.length-1].gender = 3;
 trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*46;
 trainers[trainers.length-1].y = 45*77;
-
+trainers[trainers.length-1].team[0] = Object.create(Monster);
+Object.assign(trainers[trainers.length-1].team[0], Mons[33])
+trainers[trainers.length-1].team[0].level = 15;
+trainers[trainers.length-1].team[0].calcStats();
+trainers[trainers.length-1].team[0].currhealth = trainers[trainers.length-1].team[0].health;
+trainers[trainers.length-1].team[1] = Object.create(Monster);
+currMove = 0;
+for(i = 0; i < trainers[trainers.length-1].team[0].level; i++)
+{
+	if(trainers[trainers.length-1].team[0].learnset[i] != null)
+	{
+		trainers[trainers.length-1].team[0].moves[currMove] = trainers[trainers.length-1].team[0].learnset[i];
+		trainers[trainers.length-1].team[0].movespp[currMove] = Moves[trainers[trainers.length-1].team[0].learnset[i]].pp;
+		currMove = (currMove + 1) % 4;
+	}
+}
+Object.assign(trainers[trainers.length-1].team[1], Mons[12])
+trainers[trainers.length-1].team[1].level = 15;
+trainers[trainers.length-1].team[1].calcStats();
+trainers[trainers.length-1].team[1].currhealth = trainers[trainers.length-1].team[1].health;
+currMove = 0;
+for(i = 0; i < trainers[trainers.length-1].team[1].level; i++)
+{
+	if(trainers[trainers.length-1].team[1].learnset[i] != null)
+	{
+		trainers[trainers.length-1].team[1].moves[currMove] = trainers[trainers.length-1].team[1].learnset[i];
+		trainers[trainers.length-1].team[1].movespp[currMove] = Moves[trainers[trainers.length-1].team[1].learnset[i]].pp;
+		currMove = (currMove + 1) % 4;
+	}
+}
+trainers[trainers.length-1].team[2] = Object.create(Monster);
+Object.assign(trainers[trainers.length-1].team[2], Mons[31])
+trainers[trainers.length-1].team[2].level = 16;
+trainers[trainers.length-1].team[2].calcStats();
+trainers[trainers.length-1].team[2].currhealth = trainers[trainers.length-1].team[2].health;
+currMove = 0;
+for(i = 0; i < trainers[trainers.length-1].team[2].level; i++)
+{
+	if(trainers[trainers.length-1].team[2].learnset[i] != null)
+	{
+		trainers[trainers.length-1].team[2].moves[currMove] = trainers[trainers.length-1].team[2].learnset[i];
+		trainers[trainers.length-1].team[2].movespp[currMove] = Moves[trainers[trainers.length-1].team[2].learnset[i]].pp;
+		currMove = (currMove + 1) % 4;
+	}
+}
 numEnemies = 1;
 enemy = [];
 enemy[0] = Object.create(Monster);
@@ -1558,8 +1613,8 @@ spawnList = [
 
 spawnListLevel = [2,7,13,5,9];
 p = {};
-p.x = 45 * 5;
-p.y = 45 * 5;
+p.x = 45 * 11;
+p.y = 45 * 2;
 p.newx = 0;
 p.newy = 0;
 p.dir = 0;
@@ -1591,6 +1646,7 @@ hasKey = false;
 catchNum = 0;
 needed = 0;
 buttonsHit = 0;
+doorOpen = false;
 currText = [];
 typeNames = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Poison', 'Ground', 'Psychic', 'Bug', 'Dark'];
 typeColors = ['gray', 'darkorange', 'blue', 'green', 'goldenrod', 'purple', 'brown', 'darkorchid', 'darkseagreen', 'darkslateblue'];
@@ -1657,6 +1713,7 @@ starterChoice = 0;
 itemIndex = 0;
 yes = 0;
 checktile = null;
+toggle = false;
 function draw()
 {
 	frame += 1;
@@ -1774,6 +1831,21 @@ function draw()
 	}
 	else if (gamestate == 2) //Overworld
 	{
+		
+		if((buttonsHit >= 3 || doorOpen) && !toggle)
+		{
+			doorOpen = true;
+			toggle = true;
+			for(i = 0; i < 3; i++)
+			{
+				for(j = 0; j < 3; j++)
+				{
+					mapS[40+i][81+j] = Object.create(TileObj);
+					Object.assign(mapS[40+i][81+j],TileObj[111]);
+				}
+			}
+			
+		}
 		//console.log(Math.floor(p.x/45) + ", " + Math.floor(p.y/45));
 		if(canEvolve.length > 0)
 		{
@@ -1946,7 +2018,8 @@ function draw()
 								fightDone = false;
 								isTrainer = true;
 								isGym = true;
-								currText.push("Good luck kid");
+								currText.push("You are challenged by leader Grimm");
+								currText.push("You won't beat my dark types");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
 								teamIndex = 0;
@@ -1978,7 +2051,40 @@ function draw()
 								}
 								break;
 							}
+							if(i == 4)
+							{
+								gamestate = 3;
+								enemy = trainers[i].team;
+								fightDone = false;
+								isTrainer = true;
+								isGym = true;
+								currText.push("You are challenged by leader Cecilia");
+								currText.push("I hope our duel is honorable");
+								friendStats = [0,0,0,0,0];
+								enemyStats = [0,0,0,0,0];
+								teamIndex = 0;
+								battlemenu = 2;
+								hasloaded = false;
+								numEnemies = 2;
+								currTrainer = i;
+								break;
+							}
 						}
+					}
+					if (checktile.id == 523)
+					{
+						buttonsHit++;
+						Object.assign(mapS[checktile.x][checktile.y],TileObj[checktile.id-1]);
+					}
+					if (checktile.id == 525)
+					{
+						buttonsHit++;
+						Object.assign(mapS[checktile.x][checktile.y],TileObj[checktile.id-1]);
+					}
+					if (checktile.id == 527)
+					{
+						buttonsHit++;
+						Object.assign(mapS[checktile.x][checktile.y],TileObj[checktile.id-1]);
 					}
 					if (checktile.id == 548)
 					{
@@ -2404,7 +2510,13 @@ function draw()
 			stroke(0);
 		}else
 		{
-			image(grimmBattle, 275, 50, 3 * monWidth, 3 * monHeight);
+			if(trainers[currTrainer].gender == 2)
+			{
+				image(grimmBattle, 275, 50, 3 * monWidth, 3 * monHeight);
+			}else
+			{
+				image(psychicBattle, 275, 50, 3 * monWidth, 3 * monHeight);
+			}
 		}
 		textSize(12);
 		fill('white');

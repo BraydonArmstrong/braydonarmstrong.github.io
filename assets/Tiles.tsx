@@ -3351,36 +3351,42 @@
  <tile id="522">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button3Pressed.png"/>
  </tile>
  <tile id="523">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button3Unpressed.png"/>
  </tile>
  <tile id="524">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button2Pressed.png"/>
  </tile>
  <tile id="525">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button2Unpressed.png"/>
  </tile>
  <tile id="526">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button1Pressed.png"/>
  </tile>
  <tile id="527">
   <properties>
    <property name="Door" type="bool" value="false"/>
+   <property name="Solid" type="bool" value="true"/>
   </properties>
   <image width="15" height="15" source="Tiles/Button1Unpressed.png"/>
  </tile>
