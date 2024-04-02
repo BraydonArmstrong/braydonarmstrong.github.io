@@ -10,29 +10,30 @@
     <div id="canvasContainer" class = "absolute">
       <script src="Monsters.js"></script>
     </div>
+    <div id = "mobile">
+      <div class = "buttons">
+        <input class = "button smaller-gap" id="S" type="button" value="S" onclick="sPress();" />
+        <input class = "button smaller-gap" id="E" type="button" value="E" onclick="ePress();" />
+        <input class = "button smaller-gap" id="D" type="button" value="D" onclick="dPress();" />
+      </div>
 
-    <div class = "buttons">
-      <input class = "button smaller-gap" id="S" type="button" value="S" onclick="sPress();" />
-      <input class = "button smaller-gap" id="E" type="button" value="E" onclick="ePress();" />
-      <input class = "button smaller-gap" id="D" type="button" value="D" onclick="dPress();" />
-    </div>
+      <div class = "zx">
+        <input class = "button smaller-gap" id="Z" type="button" value="Z" onclick="zPress();" />
+        <input class = "button smaller-gap" id="X" type="button" value="X" onclick="xPress();" />
+      </div>
 
-    <div class = "zx">
-      <input class = "button smaller-gap" id="Z" type="button" value="Z" onclick="zPress();" />
-      <input class = "button smaller-gap" id="X" type="button" value="X" onclick="xPress();" />
-    </div>
+      <div class = "arrowup">
+        <input class = "button"id="Up" type="button" value="Up" ontouchstart="upPress();" ontouchend="upStop();" />
+      </div>
 
-    <div class = "arrowup">
-      <input class = "button"id="Up" type="button" value="Up" onmousedown="upPress();" onmouseup="upStop();" />
-    </div>
+      <div class = "arrows">
+        <input class = "button" id="Left" type="button" value="Left" ontouchstart="leftPress();" ontouchend="leftStop();" />
+        <input class = "button" id="Right" type="button" value="Right" ontouchstart="rightPress();" ontouchend="rightStop();" />
+      </div>
 
-    <div class = "arrows">
-      <input class = "button" id="Left" type="button" value="Left" onmousedown="leftPress();" onmouseup="leftStop();" />
-      <input class = "button" id="Right" type="button" value="Right" onmousedown="rightPress();" onmouseup="rightStop();" />
-    </div>
-
-    <div class = "arrowdown">
-      <input class = "button" id="Down" type="button" value="Down" onmousedown="downPress();" onmouseup="downStop();" />
+      <div class = "arrowdown">
+        <input class = "button" id="Down" type="button" value="Down" ontouchstart="downPress();" ontouchend="downStop();" />
+      </div>
     </div>
 </body>
 </html>
