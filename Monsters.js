@@ -115,7 +115,7 @@ const Tile = {
 	isPassable: false,
 };
 Mons = [];
-for (let i = 0; i < 34; i++)
+for (let i = 0; i < 35; i++)
 {
 	Mons.push(Object.create(Monster));
 	Mons[i].name = "";
@@ -784,6 +784,24 @@ Mons[start].learnset[15] = 5;
 Mons[start].learnset[22] = 8;
 Mons[start].learnset[31] = 18;
 Mons[start].learnset[39] = 25;
+start++;
+Mons[start].name = "Galenado";
+Mons[start].dex = "A very rare species of monster. Only one was ever seen but it went missing long ago.";
+Mons[start].type1 = 0;
+Mons[start].type2 = null;
+Mons[start].health = 85;
+Mons[start].attack = 80;
+Mons[start].defense = 95;
+Mons[start].spattack = 125;
+Mons[start].spdefense = 95;
+Mons[start].speed = 120;
+Mons[start].learnset[1] = 0;
+Mons[start].learnset[2] = 16;
+Mons[start].learnset[10] = 26;
+Mons[start].learnset[15] = 21;
+Mons[start].learnset[20] = 25;
+Mons[start].learnset[25] = 20;
+Mons[start].learnset[30] = 6;
 
 Moves = [];
 /*
@@ -1079,7 +1097,8 @@ function preload()
 		['assets/Shrimple.png', 'assets/Shrimple_back.png'],
 		['assets/Clamplex.png', 'assets/Clamplex_back.png'],
 		['assets/Conchfusing.png', 'assets/Conchfusing_back.png'],
-		['assets/Claidmourn.png', 'assets/Claidmourn_back.png']
+		['assets/Claidmourn.png', 'assets/Claidmourn_back.png'],
+		['assets/Galenado.png', 'assets/Galenado_back.png'],
 	];
 	followMons = [
 		[loadImage('assets/Woodzar_follow_front.png'), loadImage('assets/Woodzar_follow_left.png'), loadImage('assets/Woodzar_follow_right.png'), loadImage('assets/Woodzar_follow_back.png')],
@@ -1116,6 +1135,7 @@ function preload()
 		[loadImage('assets/Clamplex_follow_front.png'), loadImage('assets/Clamplex_follow_left.png'), loadImage('assets/Clamplex_follow_right.png'), loadImage('assets/Clamplex_follow_back.png')],
 		[loadImage('assets/Conchfusing_follow_front.png'), loadImage('assets/Conchfusing_follow_left.png'), loadImage('assets/Conchfusing_follow_right.png'), loadImage('assets/Conchfusing_follow_back.png')],
 		[loadImage('assets/Claidmourn_follow_front.png'), loadImage('assets/Claidmourn_follow_left.png'), loadImage('assets/Claidmourn_follow_right.png'), loadImage('assets/Claidmourn_follow_back.png')],
+		[loadImage('assets/Galenado_follow_front.png'), loadImage('assets/Galenado_follow_left.png'), loadImage('assets/Galenado_follow_right.png'), loadImage('assets/Galenado_follow_back.png')],
 	];
 
 	Player = [
@@ -1128,7 +1148,8 @@ function preload()
 		[loadImage('assets/Male_front1.png'), loadImage('assets/Male_left1.png'),loadImage('assets/Male_right1.png'),loadImage('assets/Male_back1.png')],
 		[loadImage('assets/Female_front1.png'), loadImage('assets/Female_left1.png'),loadImage('assets/Female_right1.png'),loadImage('assets/Female_back1.png')],
 		[loadImage('assets/GrimmOverworld.png')],
-		[loadImage('assets/PsychicOverworld.png')]
+		[loadImage('assets/PsychicOverworld.png')],
+		[loadImage('assets/Galenado_follow_front.png')]
 	];
 	grimmBattle = loadImage('assets/GrimmBattle.png');
 	psychicBattle = loadImage('assets/Psychic.png');
@@ -1873,6 +1894,17 @@ trainers[trainers.length-1].x = 45*9;
 trainers[trainers.length-1].y = 45*62;
 trainers[trainers.length-1].addTeam(21,9);
 
+//Trainer
+trainers.push(Object.create(Trainer));
+trainers[trainers.length-1].name = "Galenado";
+trainers[trainers.length-1].team = [];
+trainers[trainers.length-1].gender = 4;
+trainers[trainers.length-1].dir = 0;
+trainers[trainers.length-1].fightable = false;
+trainers[trainers.length-1].x = 45*29;
+trainers[trainers.length-1].y = 45*117;
+trainers[trainers.length-1].addTeam(34,20);
+
 numEnemies = 1;
 enemy = [];
 enemy[0] = Object.create(Monster);
@@ -2128,6 +2160,11 @@ function draw()
 					Object.assign(mapS[40+i][81+j],TileObj[111]);
 				}
 			}
+			for(j = 0; j < 4; j++)
+			{
+				mapS[42][177+j] = Object.create(TileObj);
+				Object.assign(mapS[41+i][177+j],TileObj[200]);
+			}
 			
 		}
 		for(i = 0; i < trainers.length; i++)
@@ -2331,6 +2368,7 @@ function draw()
 					{
 						if(checktile.x == trainers[i].x/45 && checktile.y == trainers[i].y/45 && !trainers[i].beat)
 						{
+							console.log(i);
 							if(i == 1)
 							{
 								currText.push("Sorry, the cave is too dangerous to enter right now");
@@ -2409,6 +2447,22 @@ function draw()
 								numEnemies = trainers[i].team.length;
 								currTrainer = i;
 								break;
+							}
+							if(i == 23)
+							{
+								gamestate = 3;
+								enemy = trainers[i].team;
+								fightDone = false;
+								isGym = false;
+								isTrainer = false;
+								currText.push("Swooooo");
+								friendStats = [0,0,0,0,0];
+								enemyStats = [0,0,0,0,0];
+								teamIndex = 0;
+								battlemenu = 2;
+								hasloaded = false;
+								numEnemies = trainers[i].team.length;
+								currTrainer = i;
 							}
 						}
 					}
@@ -2572,7 +2626,7 @@ function draw()
 							m.newx = 0;
 							m.newy = 0;
 							//Center doors
-						
+							
 							if ((p.x + p.newx) / 45 == 58 && (p.y + p.newy) / 45 == 48)
 							{
 								if(enteredCenter == 0)
@@ -2590,6 +2644,18 @@ function draw()
 								}
 							}else
 							{
+								if ((p.x + p.newx) / 45 == 42 && (p.y + p.newy) / 45 == 177)
+								{
+									p.x = 45 * 23;
+									p.y = 45 * 126;
+								}
+								else
+								if ((p.x + p.newx) / 45 == 23 && (p.y + p.newy) / 45 == 126)
+								{
+									p.x = 45 * 42;
+									p.y = 45 * 177;
+								}
+								else
 								if ((p.x + p.newx) / 45 == 7 && (p.y + p.newy) / 45 == 6)
 								{
 									p.x = 45 * 60;
@@ -2946,6 +3012,16 @@ function draw()
 							if(trainers[currTrainer].gender == 2)
 							{
 								trainers[1].x -= 45;
+							}
+							if(trainers[currTrainer].gender == 3)
+							{
+								currText.push("You might want to check the docks near your hometown.")
+								currText.push("I've heard rumours of a rare monster there.")
+								textBox = true;
+							}
+							if(trainers[currTrainer].gender == 5)
+							{
+								trainers[currTrainer].x -= 1500;
 							}
 						}
 						fightDone = true;
