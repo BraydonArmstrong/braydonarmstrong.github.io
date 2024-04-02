@@ -1,5 +1,7 @@
 body {
     background-color: powderblue;
+    min-height: 100vh;
+    max-width: 500vh;
 }
 
 div.absolute {
@@ -57,7 +59,8 @@ div.zx {
     border-radius: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 20px;
-    margin-right:50px
+    margin-right:50px;
+    touch-action: manipulation;
 }
 
 .smaller-gap {
