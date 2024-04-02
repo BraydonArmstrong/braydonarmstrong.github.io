@@ -35,6 +35,7 @@
         <input class = "button" id="Down" type="button" value="Down" ontouchstart="downPress();" ontouchend="downStop();" />
       </div>
     </div>
+    <p id = "test"></p>
     <script>
       var answer = document.getElementById("mobile"); 
         if (navigator.userAgent.match(/Android/i)
@@ -48,6 +49,7 @@
         } else {
           answer.style.display = 'none';
         }
+        document.getElementById("test").innerHTML = navigator.userAgent;
     </script>
 </body>
 </html>
