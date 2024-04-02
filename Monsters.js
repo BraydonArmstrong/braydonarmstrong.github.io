@@ -1240,7 +1240,12 @@ function loadData()
 		//console.log(localStorage.getItem("team"+i));
 		if(localStorage.getItem("team"+i) != "undefined")
 		{
-			team[i] = JSON.parse(localStorage.getItem("team"+i));
+			temp = JSON.parse(localStorage.getItem("team"+i));
+			team[i] = Object.create(Monster);
+			Object.assign(team[i], Mons[temp.id]);
+			Object.assign(team[i], temp);
+			team[i].calcStats();
+			
 		}
 	}
 	for(i = 0; i < 81; i++)
@@ -1248,7 +1253,11 @@ function loadData()
 		//console.log(localStorage.getItem("team"+i));
 		if(localStorage.getItem("boxes"+i) != "undefined")
 		{
-			boxes[0][i] = JSON.parse(localStorage.getItem("boxes"+i));
+			temp = JSON.parse(localStorage.getItem("boxes"+i));
+			boxes[0][i] = Object.create(Monster);
+			Object.assign(boxes[0][i], Mons[temp.id]);
+			Object.assign(boxes[0][i], temp);
+			boxes[0][i].calcStats();
 		}
 	}
 	//boxes = JSON.parse(localStorage.getItem("boxes"));
