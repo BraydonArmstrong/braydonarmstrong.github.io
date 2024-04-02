@@ -10,25 +10,29 @@
     <div id="canvasContainer" class = "absolute">
       <script src="Monsters.js"></script>
     </div>
-    <div class = "buttons">
-      
-      <input class = "button smaller-gap"id="S" type="button" value="S" onclick="sPress();" />
-      <input class = "button smaller-gap" id="E" type="button" value="E" onclick="ePress();" />
-      <input class = "button smaller-gap"id="D" type="button" value="D" onclick="dPress();" />
+
+    <div class="buttons">
+      <input class="button smaller-gap" id="S" type="button" value="S" onclick="sPress();" ontouchstart="sPress();" />
+      <input class="button smaller-gap" id="E" type="button" value="E" onclick="ePress();" ontouchstart="ePress();" />
+      <input class="button smaller-gap" id="D" type="button" value="D" onclick="dPress();" ontouchstart="dPress();" />
     </div>
-    <div class = "zx">
-      <input class = "button smaller-gap" id="Z" type="button" value="Z" onclick="zPress();" />
-      <input class = "button"id="X" type="button" value="X" onclick="xPress();" />
+    
+    <div class="zx">
+      <input class="button smaller-gap" id="Z" type="button" value="Z" onclick="zPress();" ontouchstart="zPress();" />
+      <input class="button smaller-gap" id="X" type="button" value="X" onclick="xPress();" ontouchstart="xPress();" />
     </div>
-    <div class = "arrowup">
-      <input class = "button"id="Up" type="button" value="Up" onclick="upPress();" />
+    
+    <div class="arrowup">
+      <input class="button" id="Up" type="button" value="Up" onclick="upPress();" ontouchstart="upPress();" />
     </div>
-    <div class = "arrows">
-      <input class = "button" id="Left" type="button" value="Left" onclick="leftPress();" />
-      <input class = "button" id="Right" type="button" value="Right" onclick="rightPress();" />
+    
+    <div class="arrows">
+      <input class="button" id="Left" type="button" value="Left" onclick="leftPress();" ontouchstart="leftPress();" />
+      <input class="button" id="Right" type="button" value="Right" onclick="rightPress();" ontouchstart="rightPress();" />
     </div>
-    <div class = "arrowdown">
-      <input class = "button" id="Down" type="button" value="Down" onclick="downPress();" />
+    
+    <div class="arrowdown">
+      <input class="button" id="Down" type="button" value="Down" onclick="downPress();" ontouchstart="downPress();" />
     </div>
 </body>
 </html>

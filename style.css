@@ -1,6 +1,7 @@
 body {
     background-color: powderblue;
 }
+
 div.absolute {
     position: absolute;
     top: 0px;
@@ -8,18 +9,20 @@ div.absolute {
     width: 200px;
     height: 100px;
 }
+
 div.buttons {
     position: absolute;
     top: 600px;
     left: 150px;
-    width: 300px;
+    width: 200px;
     height: 100px;
 }
+
 div.arrowup {
     position: absolute;
     top: 500px;
     left: 350px;
-    width: 200px;
+    width: 100px;
     height: 100px;
 }
 
@@ -27,7 +30,7 @@ div.arrows {
     position: absolute;
     top: 550px;
     left: 300px;
-    width: 300px;
+    width: 250px;
     height: 100px;
 }
 
@@ -35,7 +38,7 @@ div.arrowdown {
     position: absolute;
     top: 600px;
     left: 345px;
-    width: 300px;
+    width: 100px;
     height: 100px;
 }
 
@@ -43,16 +46,16 @@ div.zx {
     position: absolute;
     top: 550px;
     left: 50px;
-    width: 300px;
+    width: 100px;
     height: 100px;
 }
 
 .button {
-    background-color: #000000;
-    color: #FFFFFF;
+    background-color: #ffffff;
+    color: #000000;
     padding: 10px;
-    border-radius: 1px;
-    -moz-border-radius: 1px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
     -webkit-border-radius: 20px;
     margin-right:50px
 }
