@@ -2404,6 +2404,10 @@ function draw()
 								teamIndex = 0;
 								battlemenu = 2;
 								hasloaded = false;
+								for(j = 0; j < trainers[i].team.length; j++)
+								{
+									trainers[i].team[j].currhealth = trainers[i].team[j].health;
+								}
 								numEnemies = trainers[i].team.length;
 								currTrainer = i;
 								break;
@@ -2444,6 +2448,10 @@ function draw()
 								teamIndex = 0;
 								battlemenu = 2;
 								hasloaded = false;
+								for(j = 0; j < trainers[i].team.length; j++)
+								{
+									trainers[i].team[j].currhealth = trainers[i].team[j].health;
+								}
 								numEnemies = trainers[i].team.length;
 								currTrainer = i;
 								break;
@@ -2458,6 +2466,10 @@ function draw()
 								currText.push("Swooooo");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
+								for(j = 0; j < trainers[i].team.length; j++)
+								{
+									trainers[i].team[j].currhealth = trainers[i].team[j].health;
+								}
 								teamIndex = 0;
 								battlemenu = 2;
 								hasloaded = false;
