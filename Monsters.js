@@ -1271,11 +1271,65 @@ function loadData()
 }
 
 stats = ['attack', 'defense', 'special attack', 'special defense', 'speed'];
+z = false;
+x = false;
+s = false;
+e = false;
+d = false
+up = false;
+down = false;
+left = false;
+right = false;
+function zPress()
+{
+	z = true;
+}
+
+function xPress() 
+{
+    x = true;
+}
+
+function sPress() 
+{
+    s = true;
+}
+
+function ePress() 
+{
+    e = true;
+}
+
+function dPress() 
+{
+    d = true;
+}
+
+function upPress() 
+{
+    up = true;
+}
+
+function downPress() 
+{
+    down = true;
+}
+
+function leftPress() 
+{
+    left = true;
+}
+
+function rightPress() 
+{
+    right = true;
+}
 
 function setup()
 {
 	frameRate(30);
-	createCanvas(width, height);
+	myCanvas = createCanvas(width, height);
+	myCanvas.parent('canvasContainer');
 	noSmooth();
 	textFont(font);
 	battleCircle = loadImage('assets/BattleCircle.png');
@@ -1729,7 +1783,7 @@ function draw()
 		text("Press X to make new save",250,385);
 		textAlign(LEFT);
 		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box\nD - Dex",10,400)
-		if(keyIsDown(90))
+		if((keyIsDown(90) || z))
 		{
 			check = loadData();
 			if(check != undefined && check != null)
@@ -1738,7 +1792,7 @@ function draw()
 				holding = true;
 			}
 		}
-		if(keyIsDown(88))
+		if((keyIsDown(88) ||x))
 		{
 			saveData()
 			gamestate = 5;
@@ -1798,15 +1852,15 @@ function draw()
 		fill(255);
 		square(300, height / 2 - 1.5 * monHeight, 3 * monWidth);
 		image(img, 300, height / 2 - 1.5 * monHeight, 3 * monWidth, 3 * monHeight);
-		if (keyIsDown(88))
+		if ((keyIsDown(88) ||x))
 		{
 			gamestate = 2;
 		}
-		if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW))
+		if (!(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(RIGHT_ARROW) || right))
 		{
 			holding = false;
 		}
-		if (keyIsDown(UP_ARROW) && !holding)
+		if ((keyIsDown(UP_ARROW) || up) && !holding)
 		{
 			dexIndex = (dexIndex - 1);
 			if (dexIndex == -1)
@@ -1816,13 +1870,13 @@ function draw()
 			hasloaded = false;
 			holding = true;
 		}
-		if (keyIsDown(DOWN_ARROW) && !holding)
+		if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 		{
 			dexIndex = (dexIndex + 1) % (Mons.length);
 			hasloaded = false;
 			holding = true;
 		}
-		if ((keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) && !holding)
+		if (((keyIsDown(LEFT_ARROW) || left) || (keyIsDown(RIGHT_ARROW) || right)) && !holding)
 		{
 			isBack = !isBack;
 			hasloaded = false;
@@ -1935,7 +1989,7 @@ function draw()
 			moved = false;
 			if (!textBox)
 			{
-				if (!keyIsDown(90) && !keyIsDown(69) && !keyIsDown(68) && !keyIsDown(83))
+				if (!(keyIsDown(90) || z) && !(keyIsDown(69) || e) && !(keyIsDown(68) || d) && !(keyIsDown(83) || s))
 				{
 					holding = false;
 				}
@@ -1955,14 +2009,14 @@ function draw()
 				{
 					checktile = mapS[((p.x) / 45)][((p.y) / 45) - 1];
 				}
-				if(keyIsDown(83) && !holding)
+				if((keyIsDown(83) || s) && !holding)
 				{
 					saveData();
 					currText.push("Game was saved");
 					textBox = true;
 					holding = true;
 				}
-				if(keyIsDown(90) && !holding)
+				if((keyIsDown(90) || z) && !holding)
 				{
 					moved = true;
 					holding = true;
@@ -2097,19 +2151,19 @@ function draw()
 						healAll();
 					}
 				}
-				if(keyIsDown(69) && !holding)
+				if((keyIsDown(69) || e) && !holding)
 				{
 					menuOpen = true;
 					gamestate = 4;
 					hasloaded = false;
 				}
-				if(keyIsDown(68) && !holding)
+				if((keyIsDown(68) || d) && !holding)
 				{
 					menuOpen = true;
 					gamestate = 1;
 					hasloaded = false;
 				}
-				if (keyIsDown(UP_ARROW))
+				if ((keyIsDown(UP_ARROW) || up))
 				{
 					p.newy = -45;
 					m.dir = p.dir;
@@ -2117,7 +2171,7 @@ function draw()
 					movestart = frame;
 					moved = true;
 				}
-				if (keyIsDown(DOWN_ARROW) && !moved)
+				if ((keyIsDown(DOWN_ARROW) || down) && !moved)
 				{
 					p.newy = 45;
 					m.dir = p.dir;
@@ -2125,7 +2179,7 @@ function draw()
 					movestart = frame;
 					moved = true;
 				}
-				if (keyIsDown(LEFT_ARROW) && !moved)
+				if ((keyIsDown(LEFT_ARROW) || left) && !moved)
 				{
 					p.newx = -45;
 					m.dir = p.dir;
@@ -2133,7 +2187,7 @@ function draw()
 					movestart = frame;
 					moved = true;
 				}
-				if (keyIsDown(RIGHT_ARROW) && !moved)
+				if ((keyIsDown(RIGHT_ARROW) || right) && !moved)
 				{
 					p.newx = 45;
 					m.dir = p.dir;
@@ -2146,11 +2200,11 @@ function draw()
 			{
 				fill('black');
 				draw_text(currText[0]);
-				if (!keyIsDown(90))
+				if (!(keyIsDown(90) || z))
 				{
 					holding = false;
 				}
-				if (keyIsDown(90) && !holding)
+				if ((keyIsDown(90) || z) && !holding)
 				{
 					currText.shift();
 					if (currText.length == 0)
@@ -2482,7 +2536,7 @@ function draw()
 			img2 = load(Images[enemy[enemyIndex].id][0]);
 			hasloaded = true;
 		}
-		if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && !keyIsDown(90) && !keyIsDown(88))
+		if (!(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(RIGHT_ARROW) || right) && !(keyIsDown(90) || z) && !(keyIsDown(88) ||x))
 		{
 			holding = false;
 		}
@@ -2653,35 +2707,35 @@ function draw()
 					text("Sack", 270, 480);
 					text("Party", 370, 440);
 					text("Flee", 370, 480);
-					if ((keyIsDown(UP_ARROW) || keyIsDown(DOWN_ARROW)) && !holding)
+					if (((keyIsDown(UP_ARROW) || up) || (keyIsDown(DOWN_ARROW) || down)) && !holding)
 					{
 						option = (option + 1) % 2 + Math.floor(option / 2) * 2;
 						holding = true;
 					}
-					if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
+					if (((keyIsDown(RIGHT_ARROW) || right) || (keyIsDown(LEFT_ARROW) || left)) && !holding)
 					{
 						option += 2;
 						holding = true;
 					}
-					if ((option == 0 && keyIsDown(90)) && !holding)
+					if ((option == 0 && (keyIsDown(90) || z)) && !holding)
 					{
 						battlemenu = 1;
 						holding = true;
 						option = 0;
 					}
-					if((option == 1 && keyIsDown(90)) && !holding)
+					if((option == 1 && (keyIsDown(90) || z)) && !holding)
 					{
 						battlemenu = 4;
 						holding = true;
 						itemIndex = 0;
 					}
-					if ((option == 2 && keyIsDown(90)) && !holding)
+					if ((option == 2 && (keyIsDown(90) || z)) && !holding)
 					{
 						battlemenu = 3;
 						holding = true;
 						selected = 0;
 					}
-					if ((option == 3 && keyIsDown(90)) && !holding)
+					if ((option == 3 && (keyIsDown(90) || z)) && !holding)
 					{
 						holding = true;
 						if(!isTrainer)
@@ -2757,17 +2811,17 @@ function draw()
 				text(Moves[team[teamIndex].moves[3]].name, 350, 480);
 			}
 			fill('black');
-			if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
+			if (((keyIsDown(RIGHT_ARROW) || right) || (keyIsDown(LEFT_ARROW) || left)) && !holding)
 			{
 				option = (option + 1) % 2 + Math.floor(option / 2) * 2;
 				holding = true;
 			}
-			if ((keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW)) && !holding)
+			if (((keyIsDown(DOWN_ARROW) || down) || (keyIsDown(UP_ARROW) || up)) && !holding)
 			{
 				option += 2;
 				holding = true;
 			}
-			if (keyIsDown(88) && !holding)
+			if ((keyIsDown(88) ||x) && !holding)
 			{
 				battlemenu = 0;
 				holding = true;
@@ -2792,7 +2846,7 @@ function draw()
 			{
 				espd = (enemy[enemyIndex].speed * 2)/(2 - enemyStats[4]);
 			}
-			if (team[teamIndex].moves[option] != null && keyIsDown(90) && !holding && team[teamIndex].movespp[option] > 0)
+			if (team[teamIndex].moves[option] != null && (keyIsDown(90) || z) && !holding && team[teamIndex].movespp[option] > 0)
 			{
 				team[teamIndex].movespp[option]--;
 				if (fspd >= espd)
@@ -2955,11 +3009,11 @@ function draw()
 		{
 			
 			draw_text(currText[0]);
-			if (!keyIsDown(90))
+			if (!(keyIsDown(90) || z))
 			{
 				holding = false;
 			}
-			if (keyIsDown(90) && !holding)
+			if ((keyIsDown(90) || z) && !holding)
 			{
 				currText.shift();
 				if (currText.length == 0)
@@ -2987,28 +3041,28 @@ function draw()
 				fill('black')
 			}
 			text("v",150+75*(selected%2),150+Math.floor(selected/2)*75)
-			if (keyIsDown(88) && !holding)
+			if ((keyIsDown(88) ||x) && !holding)
 			{
 				battlemenu = 0;
 				holding = true;
 				option = 0;
 			}
-			if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
+			if (((keyIsDown(RIGHT_ARROW) || right) || (keyIsDown(LEFT_ARROW) || left)) && !holding)
 			{
 				selected = (selected + 1) % 2 + Math.floor(selected / 2) * 2;
 				holding = true;
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				selected += 2;
 				holding = true;
 			}
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				selected -= 2;
 				holding = true;
 			}
-			if((keyIsDown(90) && !holding))
+			if(((keyIsDown(90) || z) && !holding))
 			{
 				if(team[selected] != undefined && team[selected] != null)
 				{
@@ -3049,11 +3103,11 @@ function draw()
 			//triangle(15,230,15,250,25,240);
 			text("Held: " + inventory[itemIndex], 300,300)
 			text(">", 15, 250);
-			if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && !keyIsDown(90) && !keyIsDown(88))
+			if (!(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(RIGHT_ARROW) || right) && !(keyIsDown(90) || z) && !(keyIsDown(88) ||x))
 			{
 				holding = false;
 			}
-			if (keyIsDown(90) && !holding)
+			if ((keyIsDown(90) || z) && !holding)
 			{
 				switch(itemIndex)
 				{
@@ -3122,12 +3176,12 @@ function draw()
 				}
 				holding = true;
 			}
-			if(keyIsDown(88) && !holding)
+			if((keyIsDown(88) ||x) && !holding)
 			{
 				battlemenu = 0;
 				holding = true;
 			}
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				itemIndex = (itemIndex - 1);
 				if (itemIndex == -1)
@@ -3137,7 +3191,7 @@ function draw()
 				hasloaded = false;
 				holding = true;
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				itemIndex = (itemIndex + 1) % (items.length);
 				hasloaded = false;
@@ -3160,28 +3214,28 @@ function draw()
 				fill('black')
 			}
 			text("v",150+75*(selected%2),150+Math.floor(selected/2)*75)
-			if (keyIsDown(88) && !holding)
+			if ((keyIsDown(88) ||x) && !holding)
 			{
 				battlemenu = 4;
 				holding = true;
 				option = 0;
 			}
-			if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
+			if (((keyIsDown(RIGHT_ARROW) || right) || (keyIsDown(LEFT_ARROW) || left)) && !holding)
 			{
 				selected = (selected + 1) % 2 + Math.floor(selected / 2) * 2;
 				holding = true;
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				selected += 2;
 				holding = true;
 			}
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				selected -= 2;
 				holding = true;
 			}
-			if((keyIsDown(90) && !holding))
+			if(((keyIsDown(90) || z) && !holding))
 			{
 				if(team[selected] != undefined && team[selected] != null)
 				{
@@ -3265,7 +3319,7 @@ function draw()
 		{
 			hasloaded = false;
 		}
-		if(!keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(90) && !keyIsDown(88))
+		if(!(keyIsDown(RIGHT_ARROW) || right) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(90) || z) && !(keyIsDown(88) ||x))
 		{
 			holding = false;
 		}		
@@ -3384,7 +3438,7 @@ function draw()
 		}
 		if(onTeam)
 		{
-			if (keyIsDown(RIGHT_ARROW)&& !holding)
+			if ((keyIsDown(RIGHT_ARROW) || right)&& !holding)
 			{
 				if((selectedTeam + 1) % 2 == 0)
 				{
@@ -3395,23 +3449,23 @@ function draw()
 				}
 				holding = true;
 			}
-			if (keyIsDown(LEFT_ARROW) && !holding)
+			if ((keyIsDown(LEFT_ARROW) || left) && !holding)
 			{
 				selectedTeam = (selectedTeam - 1) % 2 + Math.floor(selectedTeam / 2) * 2;
 				holding = true;
 				
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				selectedTeam += 2;
 				holding = true;
 			}
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				selectedTeam -= 2;
 				holding = true;
 			}
-			if (keyIsDown(90) && !holding)
+			if ((keyIsDown(90) || z) && !holding)
 			{
 				
 				if(pickupTeam == null && pickup == -1)
@@ -3454,12 +3508,12 @@ function draw()
 			}
 		}else
 		{
-			if (keyIsDown(RIGHT_ARROW)&& !holding)
+			if ((keyIsDown(RIGHT_ARROW) || right)&& !holding)
 			{
 				selected = (selected + 1) % 9 + Math.floor(selected / 9) * 9;
 				holding = true;
 			}
-			if (keyIsDown(LEFT_ARROW) && !holding)
+			if ((keyIsDown(LEFT_ARROW) || left) && !holding)
 			{
 				if((selected - 1) % 9 == 8 || (selected - 1) == -1)
 				{
@@ -3471,17 +3525,17 @@ function draw()
 				holding = true;
 				
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				selected += 9;
 				holding = true;
 			}
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				selected -= 9;
 				holding = true;
 			}
-			if (keyIsDown(90) && !holding)
+			if ((keyIsDown(90) || z) && !holding)
 			{
 				if(pickup == -1 && (boxes[currbox][selected] != null ||boxes[currbox][selected] != undefined) && pickupTeam == null)
 				{
@@ -3507,7 +3561,7 @@ function draw()
 		}
 		if(pickup == -1 && pickupTeam == null)
 		{
-			if(keyIsDown(88) && !holding)
+			if((keyIsDown(88) ||x) && !holding)
 			{
 				gamestate = 2;
 			}
@@ -3531,7 +3585,7 @@ function draw()
 	}
 	else if(gamestate == 5) //Starter
 	{
-		if(!keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(90) && !keyIsDown(88))
+		if(!(keyIsDown(RIGHT_ARROW) || right) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(90) || z) && !(keyIsDown(88) ||x))
 		{
 			holding = false;
 		}	
@@ -3542,12 +3596,12 @@ function draw()
 			starter2 = load(Images[3][0]);
 			starter3 = load(Images[6][0]);
 		}
-		if (keyIsDown(RIGHT_ARROW)&& !holding)
+		if ((keyIsDown(RIGHT_ARROW) || right)&& !holding)
 		{
 			starterChoice += 1;
 			holding = true;
 		}
-		if (keyIsDown(LEFT_ARROW) && !holding)
+		if ((keyIsDown(LEFT_ARROW) || left) && !holding)
 		{
 			starterChoice -= 1;
 			holding = true;
@@ -3561,7 +3615,7 @@ function draw()
 		{
 			starterChoice += 3;
 		}
-		if(keyIsDown(90) && !holding)
+		if((keyIsDown(90) || z) && !holding)
 		{
 			team[0] = Object.create(Monster);
 			Object.assign(team[0], Mons[starterChoice*3]);
@@ -3616,11 +3670,11 @@ function draw()
 		//triangle(15,230,15,250,25,240);
 		text("Held: " + inventory[itemIndex], 300,300)
 		text(">", 15, 250);
-		if (!keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW) && !keyIsDown(90))
+		if (!(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(RIGHT_ARROW) || right) && !(keyIsDown(90) || z))
 		{
 			holding = false;
 		}
-		if (keyIsDown(90) && !holding)
+		if ((keyIsDown(90) || z) && !holding)
 		{
 			if(money >= itemCost[itemIndex])
 			{
@@ -3629,11 +3683,11 @@ function draw()
 			}
 			holding = true;
 		}
-		if(keyIsDown(88))
+		if((keyIsDown(88) ||x))
 		{
 			gamestate = 2;
 		}
-		if (keyIsDown(UP_ARROW) && !holding)
+		if ((keyIsDown(UP_ARROW) || up) && !holding)
 		{
 			itemIndex = (itemIndex - 1);
 			if (itemIndex == -1)
@@ -3643,7 +3697,7 @@ function draw()
 			hasloaded = false;
 			holding = true;
 		}
-		if (keyIsDown(DOWN_ARROW) && !holding)
+		if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 		{
 			itemIndex = (itemIndex + 1) % (items.length);
 			hasloaded = false;
@@ -3669,7 +3723,7 @@ function draw()
 		
 		image(img, 150, height / 2 - 2 * monHeight, 3 * monWidth, 3 * monHeight);
 		
-		if (!keyIsDown(90) && !keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW))
+		if (!(keyIsDown(90) || z) && !(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down))
 		{
 			holding = false;
 		}
@@ -3679,7 +3733,7 @@ function draw()
 			fill('black');
 			text("Yes", 420, 300);
 			text("No", 420, 350);
-			if (keyIsDown(UP_ARROW) && !holding)
+			if ((keyIsDown(UP_ARROW) || up) && !holding)
 			{
 				yes = (yes - 1);
 				if (yes == -1)
@@ -3688,7 +3742,7 @@ function draw()
 				}
 				holding = true;
 			}
-			if (keyIsDown(DOWN_ARROW) && !holding)
+			if ((keyIsDown(DOWN_ARROW) || down) && !holding)
 			{
 				yes = (yes + 1) % (2);
 				holding = true;
@@ -3698,7 +3752,7 @@ function draw()
 				
 				text(">", 400, 300 + yes*50);
 				draw_text(currText[0]);
-				if (keyIsDown(90) && !holding)
+				if ((keyIsDown(90) || z) && !holding)
 				{
 					currText.shift();
 					if (currText.length == 0)
@@ -3726,7 +3780,7 @@ function draw()
 			{
 				
 				draw_text(currText[0]);
-				if (keyIsDown(90) && !holding)
+				if ((keyIsDown(90) || z) && !holding)
 				{
 					currText.shift();
 					if (currText.length == 0)
@@ -3768,7 +3822,7 @@ function draw()
 			}
 			
 		}
-		if (!keyIsDown(90) && !keyIsDown(88) && !keyIsDown(UP_ARROW) && !keyIsDown(DOWN_ARROW) && !keyIsDown(LEFT_ARROW) && !keyIsDown(RIGHT_ARROW))
+		if (!(keyIsDown(90) || z) && !(keyIsDown(88) ||x) && !(keyIsDown(UP_ARROW) || up) && !(keyIsDown(DOWN_ARROW) || down) && !(keyIsDown(LEFT_ARROW) || left) && !(keyIsDown(RIGHT_ARROW) || right))
 		{
 			holding = false;
 		}
@@ -3808,12 +3862,12 @@ function draw()
 			text(Moves[team[teamIndex].moves[3]].name, 370, 480);
 		}
 		fill('black');
-		if ((keyIsDown(RIGHT_ARROW) || keyIsDown(LEFT_ARROW)) && !holding)
+		if (((keyIsDown(RIGHT_ARROW) || right) || (keyIsDown(LEFT_ARROW) || left)) && !holding)
 		{
 			option = (option + 1) % 2 + Math.floor(option / 2) * 2;
 			holding = true;
 		}
-		if ((keyIsDown(DOWN_ARROW) || keyIsDown(UP_ARROW)) && !holding)
+		if (((keyIsDown(DOWN_ARROW) || down) || (keyIsDown(UP_ARROW) || up)) && !holding)
 		{
 			option += 2;
 			holding = true;
@@ -3830,7 +3884,7 @@ function draw()
 		{
 			
 			draw_text(currText[0]);
-			if (keyIsDown(90) && !holding)
+			if ((keyIsDown(90) || z) && !holding)
 			{
 				currText.shift();
 				if (currText.length == 0)
@@ -3848,12 +3902,12 @@ function draw()
 			}
 		}else
 		{
-			if (keyIsDown(88) && !holding)
+			if ((keyIsDown(88) ||x) && !holding)
 			{
 				gamestate = 2;
 				canLearn.shift();
 			}
-			if(keyIsDown(90) && !holding)
+			if((keyIsDown(90) || z) && !holding)
 			{
 				team[canLearn[0]].moves[option] = team[canLearn[0]].learnset[team[canLearn[0]].level];
 				team[canLearn[0]].movespp[option] = Moves[team[canLearn[0]].moves[option]].pp;
@@ -3862,4 +3916,13 @@ function draw()
 			}
 		}
 	}
+	z = false;
+	x = false;
+	s = false;
+	e = false;
+	d = false
+	up = false;
+	down = false;
+	left = false;
+	right = false;
 }
