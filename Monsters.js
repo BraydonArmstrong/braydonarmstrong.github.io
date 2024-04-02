@@ -1325,6 +1325,26 @@ function rightPress()
     right = true;
 }
 
+function upStop() 
+{
+    up = false;
+}
+
+function downStop() 
+{
+    down = false;
+}
+
+function leftStop() 
+{
+    left = false;
+}
+
+function rightStop() 
+{
+    right = false;
+}
+
 function setup()
 {
 	frameRate(30);
@@ -3921,8 +3941,4 @@ function draw()
 	s = false;
 	e = false;
 	d = false
-	up = false;
-	down = false;
-	left = false;
-	right = false;
 }

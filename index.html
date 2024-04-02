@@ -23,16 +23,16 @@
     </div>
 
     <div class = "arrowup">
-      <input class = "button"id="Up" type="button" value="Up" onclick="upPress();" />
+      <input class = "button"id="Up" type="button" value="Up" onmousedown="upPress();" onmouseup="upStop();" />
     </div>
 
     <div class = "arrows">
-      <input class = "button" id="Left" type="button" value="Left" onclick="leftPress();" />
-      <input class = "button" id="Right" type="button" value="Right" onclick="rightPress();" />
+      <input class = "button" id="Left" type="button" value="Left" onmousedown="leftPress();" onmouseup="leftStop();" />
+      <input class = "button" id="Right" type="button" value="Right" onmousedown="rightPress();" onmouseup="rightStop();" />
     </div>
 
     <div class = "arrowdown">
-      <input class = "button" id="Down" type="button" value="Down" onclick="downPress();" />
+      <input class = "button" id="Down" type="button" value="Down" onmousedown="downPress();" onmouseup="downStop();" />
     </div>
 </body>
 </html>
