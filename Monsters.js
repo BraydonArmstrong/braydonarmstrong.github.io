@@ -2012,7 +2012,7 @@ function draw()
 		text("Press Z to load save",250,370);
 		text("Press X to make new save",250,385);
 		textAlign(LEFT);
-		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box\nD - Dex",10,400)
+		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box/Use potion in box\nD - Dex",10,400)
 		if((keyIsDown(90) || z))
 		{
 			check = loadData();
