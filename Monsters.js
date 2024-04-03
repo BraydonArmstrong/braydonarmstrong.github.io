@@ -3231,6 +3231,10 @@ function draw()
 							healAll();
 						}
 					}
+					if(fightstart)
+					{
+						teamParticipated = [];
+					}
 					text(">", 250 + Math.floor(option / 2) * 100, 440 + (option % 2) * 40);
 					text("Fight", 270, 440);
 					text("Sack", 270, 480);
