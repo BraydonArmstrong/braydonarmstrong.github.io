@@ -1063,6 +1063,7 @@ let TileImages = [];
 //var pixelFont = loadFont('assets/slkscr.ttf');
 function preload()
 {
+	mapImage = loadImage('assets/Map.png');
 	bigSatchel = loadImage('assets/satchel.png');
 	font = loadFont("assets/PressStart2P-Regular.ttf");
 	Images = [
@@ -2117,6 +2118,7 @@ function draw()
 			}
 		}
 		background('salmon');
+		image(mapImage,350,20,100,74);
 		textSize(15);
 		fill(0);
 		for (let i = 0; i < Mons.length; i++)
@@ -4224,13 +4226,9 @@ function draw()
 		text("ORDER NOW AND RECEIVE 5 FREE SATCHELS",250,350);
 		textSize(25);
 		text("Ajjizon",250,50)
-		strokeWeight(5);
 		textSize(12);
-		stroke('purple');
 		noFill();
 		arc(225, 50, 100, 30, 0, PI, OPEN);
-		strokeWeight(1);
-		stroke('black');
 		fill('black');
 		textAlign(LEFT);
 
