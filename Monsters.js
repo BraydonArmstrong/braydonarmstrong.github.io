@@ -21,7 +21,7 @@ let typechart = [
 	[1, 0.5, 2, 0.5, 1, 0.5, 1, 1, 0.5, 1],
 	[1, 1, 2, 0.5, 0.5, 1, 0, 1, 1, 1],
 	[1, 1, 1, 2, 1, 0.5, 0.5, 1, 1, 1],
-	[1, 2, 1, 0.5, 2, 2, 1, 1, 0.5, 1],
+	[1, 2, 2, 0.5, 2, 2, 1, 1, 0.5, 1],
 	[1, 1, 1, 1, 1, 2, 1, 0.5, 1, 0],
 	[1, 0.5, 1, 2, 1, 0.5, 1, 2, 1, 2],
 	[1, 1, 1, 1, 1, 1, 1, 2, 1, 0.5]
@@ -63,7 +63,7 @@ const Monster = {
 		}
 		if(this.evo != -1)
 		{
-			if(this.level > this.evo)
+			if(this.level >= this.evo)
 			{
 				canEvolve.push(ind);
 			}
@@ -1779,7 +1779,7 @@ trainers[trainers.length-1].fightable = true;
 trainers[trainers.length-1].range = 3;
 trainers[trainers.length-1].x = 45*84;
 trainers[trainers.length-1].y = 45*18;
-trainers[trainers.length-1].addTeam(24,8);
+trainers[trainers.length-1].addTeam(23,8);
 
 //Trainer
 trainers.push(Object.create(Trainer));
