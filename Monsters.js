@@ -1404,6 +1404,7 @@ function rightStop()
 
 function setup()
 {
+	console.log(Mons);
 	frameRate(30);
 	myCanvas = createCanvas(width, height);
 	myCanvas.parent('canvasContainer');
@@ -1622,9 +1623,9 @@ const Trainer = {
 				currMove = (currMove + 1) % 4;
 			}
 		}
-		console.log(this.team);
 	}
 };
+
 
 trainers = [];
 //Pokemon Center
@@ -2612,6 +2613,10 @@ function draw()
 								enemy = []
 								enemy[0] = Object.create(Monster);
 								Object.assign(enemy[0], Mons[spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)][Math.floor(Math.random() * spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)].length)]])
+								if(enemy[0].id == 34)
+								{
+									Object.assign(enemy[0], Mons[33]);
+								}
 								enemy[0].level = spawnListLevel[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)] + round(Math.random() * 2);
 								enemy[0].calcStats();
 								enemy[0].currhealth = enemy[0].health;
