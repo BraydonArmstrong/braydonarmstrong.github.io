@@ -2891,18 +2891,6 @@ function draw()
 	}
 	else if (gamestate == 3) //Battle
 	{
-		if(team[teamIndex].currhealth == 0 && !friendFainted)
-		{
-			for(i = 0; i < team.length; i++)
-			{
-				if(team[i].currhealth != 0)
-				{
-					teamIndex = i;
-					hasloaded = false;
-					break;
-				}
-			}
-		}
 		if (!hasloaded)
 		{
 			img1 = load(Images[team[teamIndex].id][1]);
@@ -3648,6 +3636,18 @@ function draw()
 		if (selected < 0)
 		{
 			selected += 6;
+		}
+		if(team[teamIndex].currhealth == 0 && !friendFainted)
+		{
+			for(i = 0; i < team.length; i++)
+			{
+				if(team[i].currhealth != 0)
+				{
+					teamIndex = i;
+					hasloaded = false;
+					break;
+				}
+			}
 		}
 	}
 	else if(gamestate == 4) //Box view
