@@ -1290,7 +1290,10 @@ function loadData()
 		//console.log(localStorage.getItem("trainers"+i));
 		if(localStorage.getItem("trainers"+i) != "undefined")
 		{
+			temp = Object.create(Array);
+			Object.assign(temp, trainers[i].team);
 			Object.assign(trainers[i],JSON.parse(localStorage.getItem("trainers"+i)));
+			Object.assign(trainers[i].team, temp);
 		}
 	}
 	for(i = 0; i < 6; i++)
@@ -2470,8 +2473,6 @@ function draw()
 								currText.push("Swooooo");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
-								trainers[i].team[0].level = 32;
-								trainers[i].team[0].calcStats();
 								for(j = 0; j < trainers[i].team.length; j++)
 								{
 									trainers[i].team[j].currhealth = trainers[i].team[j].health;
