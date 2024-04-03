@@ -29,6 +29,7 @@ let typechart = [
 let Images = [];
 let Tiles = [];
 canLearn = [];
+learnMoves = [];
 canEvolve = [];
 
 const Monster = {
@@ -58,6 +59,7 @@ const Monster = {
 		if(this.learnset[this.level] != null)
 		{
 			canLearn.push(ind);
+			learnMoves.push(this.learnset[this.level]);
 		}
 		if(this.evo != -1)
 		{
@@ -631,9 +633,9 @@ Mons[start].speed = 95;
 Mons[start].evo = 7;
 Mons[start].learnset[1] = 0;
 Mons[start].learnset[2] = 8;
-Mons[start].learnset[7] = 5;
+Mons[start].learnset[6] = 5;
 Mons[start].learnset[8] = 10;
-Mons[start].learnset[10] = 14;
+Mons[start].learnset[11] = 14;
 Mons[start].learnset[18] = 24;
 Mons[start].learnset[30] = 22;
 start++;
@@ -650,9 +652,9 @@ Mons[start].speed = 20;
 Mons[start].evo = 10;
 Mons[start].learnset[1] = 0;
 Mons[start].learnset[2] = 8;
-Mons[start].learnset[7] = 5;
+Mons[start].learnset[6] = 5;
 Mons[start].learnset[8] = 10;
-Mons[start].learnset[10] = 14;
+Mons[start].learnset[11] = 14;
 Mons[start].learnset[18] = 24;
 Mons[start].learnset[30] = 22;
 start++;
@@ -668,9 +670,9 @@ Mons[start].spdefense = 65;
 Mons[start].speed = 65;
 Mons[start].learnset[1] = 0;
 Mons[start].learnset[2] = 8;
-Mons[start].learnset[7] = 5;
+Mons[start].learnset[6] = 5;
 Mons[start].learnset[8] = 10;
-Mons[start].learnset[10] = 14;
+Mons[start].learnset[11] = 14;
 Mons[start].learnset[18] = 24;
 Mons[start].learnset[30] = 22;
 start++;
@@ -4210,10 +4212,10 @@ function draw()
 			}
 			if(learnIndex == -1)
 			{
-				currText.push(team[canLearn[0]].name + " wants to learn " + Moves[team[canLearn[0]].learnset[team[canLearn[0]].level]].name);
+				currText.push(team[canLearn[0]].name + " wants to learn " + Moves[learnMoves[0]].name);
 			}else
 			{
-				currText.push(team[canLearn[0]].name + " learned " + Moves[team[canLearn[0]].learnset[team[canLearn[0]].level]].name);
+				currText.push(team[canLearn[0]].name + " learned " + Moves[learnMoves[0]].name);
 			}
 			
 		}
@@ -4287,8 +4289,8 @@ function draw()
 					textBox = false;
 					if(learnIndex != -1)
 					{
-						team[canLearn[0]].moves[learnIndex] = team[canLearn[0]].learnset[team[canLearn[0]].level];
-						team[canLearn[0]].movespp[learnIndex] = Moves[team[canLearn[0]].moves[learnIndex]].pp;
+						team[canLearn[0]].moves[learnIndex] = learnMoves[0];
+						team[canLearn[0]].movespp[learnIndex] = Moves[learnMoves[0]].pp;
 						gamestate = 2;
 						canLearn.shift();
 					}
@@ -4304,8 +4306,8 @@ function draw()
 			}
 			if((keyIsDown(90) || z) && !holding)
 			{
-				team[canLearn[0]].moves[option] = team[canLearn[0]].learnset[team[canLearn[0]].level];
-				team[canLearn[0]].movespp[option] = Moves[team[canLearn[0]].moves[option]].pp;
+				team[canLearn[0]].moves[option] = learnMoves[0];
+				team[canLearn[0]].movespp[option] = Moves[learnMoves[0]].pp;
 				gamestate = 2;
 				canLearn.shift();
 			}
