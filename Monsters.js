@@ -1261,6 +1261,7 @@ function saveData()
 	localStorage.setItem("p",JSON.stringify(p));
 	localStorage.setItem("m",JSON.stringify(m));
 	localStorage.setItem("trainers",JSON.stringify(trainers));
+	localStorage.setItem("center", JSON.stringify(enteredCenter));
 	for(i = 0; i < trainers.length; i++)
 	{
 		localStorage.setItem("trainers"+i,JSON.stringify(trainers[i]));
@@ -1286,6 +1287,7 @@ function loadData()
 	p = JSON.parse(localStorage.getItem("p"));
 	m = JSON.parse(localStorage.getItem("m"));
 	//trainers = JSON.parse(localStorage.getItem("trainers") || "[]");
+	enteredCenter = JSON.parse(localStorage.getItem("center"));
 	for(i = 0; i < trainers.length; i++)
 	{
 		//console.log(localStorage.getItem("trainers"+i));
