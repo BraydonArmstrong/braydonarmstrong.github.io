@@ -2629,7 +2629,7 @@ function draw()
 									{
 										if(enemy[0].level >= enemy[0].evo)
 										{
-											enemy[0].id+= 1
+											enemy[0].evolve();
 										}else
 										{
 											break;
