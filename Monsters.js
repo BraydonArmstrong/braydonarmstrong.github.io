@@ -2581,7 +2581,7 @@ function draw()
 							}
 							if(i == 26)
 							{
-								if(!haskey)
+								if(!hasKey)
 								{
 									currText.push("This mansion is locked, you should head into the next town to find the key");
 								}else
