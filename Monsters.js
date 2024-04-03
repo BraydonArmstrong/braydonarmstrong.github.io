@@ -3040,7 +3040,7 @@ function draw()
 								trainers[currTrainer].x -= 1500;
 							}else
 							{
-								money += 100;
+								money += 500;
 							}
 						}
 						fightDone = true;
