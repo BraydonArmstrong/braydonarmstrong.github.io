@@ -2156,6 +2156,7 @@ function draw()
 		
 		if((buttonsHit >= 3 || doorOpen) && !toggle)
 		{
+			spawnListLevel = [31,26,22,28,25];
 			doorOpen = true;
 			toggle = true;
 			for(i = 0; i < 3; i++)
@@ -2620,6 +2621,23 @@ function draw()
 								if(enemy[0].id == 34)
 								{
 									Object.assign(enemy[0], Mons[33]);
+								}
+								
+								while(true)
+								{
+									if(enemy[0].evo != null)
+									{
+										if(enemy[0].level >= enemy[0].evo)
+										{
+											enemy[0].id+= 1
+										}else
+										{
+											break;
+										}
+									}else
+									{
+										break;
+									}
 								}
 								enemy[0].level = spawnListLevel[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)] + round(Math.random() * 2);
 								enemy[0].calcStats();
