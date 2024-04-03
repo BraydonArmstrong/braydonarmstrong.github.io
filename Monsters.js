@@ -2470,6 +2470,8 @@ function draw()
 								currText.push("Swooooo");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
+								trainers[i].team[0].level = 32;
+								trainers[i].team[0].calcStats();
 								for(j = 0; j < trainers[i].team.length; j++)
 								{
 									trainers[i].team[j].currhealth = trainers[i].team[j].health;
