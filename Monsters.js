@@ -2826,6 +2826,7 @@ function draw()
 								{
 										p.x = 45 * 137;
 										p.y = 45 * 92;
+								}
 							}else
 							{
 								if ((p.x + p.newx) / 45 == 42 && (p.y + p.newy) / 45 == 177)
