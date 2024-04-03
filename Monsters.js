@@ -2962,6 +2962,7 @@ function draw()
 			if(fightDone)
 			{
 				gamestate = 2;
+
 				
 			}else
 			{
@@ -3020,6 +3021,7 @@ function draw()
 						battlemenu = 2;
 						if(isTrainer)
 						{
+							money += 100;
 							trainers[currTrainer].beat = true;
 							if(trainers[currTrainer].gender == 2)
 							{
