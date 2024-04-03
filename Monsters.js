@@ -799,11 +799,11 @@ Mons[start].spdefense = 95;
 Mons[start].speed = 120;
 Mons[start].learnset[1] = 0;
 Mons[start].learnset[2] = 16;
-Mons[start].learnset[30] = 26;
-Mons[start].learnset[35] = 21;
-Mons[start].learnset[40] = 25;
-Mons[start].learnset[45] = 20;
-Mons[start].learnset[50] = 6;
+Mons[start].learnset[20] = 26;
+Mons[start].learnset[25] = 21;
+Mons[start].learnset[30] = 25;
+Mons[start].learnset[35] = 20;
+Mons[start].learnset[40] = 6;
 
 Moves = [];
 /*
@@ -1906,7 +1906,7 @@ trainers[trainers.length-1].dir = 0;
 trainers[trainers.length-1].fightable = false;
 trainers[trainers.length-1].x = 45*29;
 trainers[trainers.length-1].y = 45*117;
-trainers[trainers.length-1].addTeam(34,40);
+trainers[trainers.length-1].addTeam(34,32);
 
 numEnemies = 1;
 enemy = [];
@@ -2964,11 +2964,11 @@ function draw()
 				if (enemy[enemyIndex].currhealth == 0)
 				{
 					
-					numEnemies -= 1;
-					battlemenu = 2;
-					hasloaded = false;
-					enemyStats = [0,0,0,0,0];
-					numParticipated = 0;
+						numEnemies -= 1;
+						battlemenu = 2;
+						hasloaded = false;
+						enemyStats = [0,0,0,0,0];
+						numParticipated = 0;
 						for(i = 0; i < team.length; i++)
 						{
 							if(teamParticipated[i])
