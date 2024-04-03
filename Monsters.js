@@ -3023,7 +3023,7 @@ function draw()
 						battlemenu = 2;
 						if(isTrainer)
 						{
-							money += 100;
+							
 							trainers[currTrainer].beat = true;
 							if(trainers[currTrainer].gender == 2)
 							{
@@ -3038,6 +3038,9 @@ function draw()
 							if(trainers[currTrainer].gender == 5)
 							{
 								trainers[currTrainer].x -= 1500;
+							}else
+							{
+								money += 100;
 							}
 						}
 						fightDone = true;
@@ -4184,6 +4187,7 @@ function draw()
 					{
 						textBox = false;
 						gamestate = 2;
+						hasEvolved = false;
 						canEvolve.shift();
 						oldName = "";
 					}
