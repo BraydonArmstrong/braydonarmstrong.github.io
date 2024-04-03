@@ -2163,6 +2163,7 @@ function draw()
 					Object.assign(mapS[40+i][81+j],TileObj[111]);
 				}
 			}
+
 			for(j = 0; j < 4; j++)
 			{
 				mapS[42][177+j] = Object.create(TileObj);
