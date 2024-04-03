@@ -1288,6 +1288,10 @@ function loadData()
 	m = JSON.parse(localStorage.getItem("m"));
 	//trainers = JSON.parse(localStorage.getItem("trainers") || "[]");
 	enteredCenter = JSON.parse(localStorage.getItem("center"));
+	if(enteredCenter == null || enteredCenter == undefined)
+	{
+		enteredCenter = 0;
+	}
 	for(i = 0; i < trainers.length; i++)
 	{
 		//console.log(localStorage.getItem("trainers"+i));
