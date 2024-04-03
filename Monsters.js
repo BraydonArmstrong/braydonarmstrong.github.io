@@ -2996,7 +2996,7 @@ function draw()
 									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
 								}
 								
-								while(team[i].currxp > team[teamIndex].xp)
+								while(team[i].currxp > team[i].xp)
 								{
 									team[i].levelUp(i);
 									currText.push(team[i].name + " grew to level " + team[i].level);
