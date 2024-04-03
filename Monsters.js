@@ -1911,6 +1911,42 @@ trainers[trainers.length-1].x = 45*29;
 trainers[trainers.length-1].y = 45*117;
 trainers[trainers.length-1].addTeam(34,32);
 
+//Starting town
+trainers.push(Object.create(Trainer));
+trainers[trainers.length-1].name = "Helper3";
+trainers[trainers.length-1].gender = 0;
+trainers[trainers.length-1].dir = 0;
+trainers[trainers.length-1].fightable = false;
+trainers[trainers.length-1].x = 45*97;
+trainers[trainers.length-1].y = 45*181;
+
+//Center
+trainers.push(Object.create(Trainer));
+trainers[trainers.length-1].name = "Helper4";
+trainers[trainers.length-1].gender = 1;
+trainers[trainers.length-1].dir = 0;
+trainers[trainers.length-1].fightable = false;
+trainers[trainers.length-1].x = 45*138;
+trainers[trainers.length-1].y = 45*92;
+
+//Center
+trainers.push(Object.create(Trainer));
+trainers[trainers.length-1].name = "Helper5";
+trainers[trainers.length-1].gender = 0;
+trainers[trainers.length-1].dir = 0;
+trainers[trainers.length-1].fightable = false;
+trainers[trainers.length-1].x = 45*262;
+trainers[trainers.length-1].y = 45*37;
+
+//Center
+trainers.push(Object.create(Trainer));
+trainers[trainers.length-1].name = "Helper6";
+trainers[trainers.length-1].gender = 1;
+trainers[trainers.length-1].dir = 2;
+trainers[trainers.length-1].fightable = false;
+trainers[trainers.length-1].x = 45*224;
+trainers[trainers.length-1].y = 45*226;
+
 numEnemies = 1;
 enemy = [];
 enemy[0] = Object.create(Monster);
@@ -2159,6 +2195,8 @@ function draw()
 			spawnListLevel = [31,26,22,28,25];
 			doorOpen = true;
 			toggle = true;
+			trainers[24].x = 45*49;
+			trainers[24].y = 45*180;
 			for(i = 0; i < 3; i++)
 			{
 				for(j = 0; j < 3; j++)
@@ -2475,7 +2513,7 @@ function draw()
 								fightDone = false;
 								isGym = false;
 								isTrainer = false;
-								currText.push("Swooooo");
+								currText.push("Vwooooosh");
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
 								for(j = 0; j < trainers[i].team.length; j++)
@@ -2487,6 +2525,105 @@ function draw()
 								hasloaded = false;
 								numEnemies = trainers[i].team.length;
 								currTrainer = i;
+							}
+							if(i == 24)
+							{
+								if(!doorOpen)
+								{
+									currText.push("Now that you have a monster you should go ahead and find the leaders to fight");
+									currText.push("There is one in the mansion in the forest, and one in the busy city, but I've heard the bridge is out.");
+								}else
+								{
+									currText.push("I took a peak in there and I saw a scary looking monster. It kind of looks like that rare one in the dex.");
+									currText.push("It says there is only one of them so I'd be careful around it if I were you.");
+								}
+								switch(p.dir)
+								{
+									case 0:
+										trainers[i].dir = 3;
+										break;
+									case 1:
+										trainers[i].dir = 2;
+										break;
+									case 2:
+										trainers[i].dir = 1;
+										break;
+									case 3:
+										trainers[i].dir = 0;
+										break;
+								}
+								textBox = true;
+								break;
+							}
+							if(i == 25)
+							{
+								currText.push("This here is a Monster care center. You can ask the nurse inside to heal up all your monsters.");
+								currText.push("There is even a shop for potions and satchels.");
+								switch(p.dir)
+								{
+									case 0:
+										trainers[i].dir = 3;
+										break;
+									case 1:
+										trainers[i].dir = 2;
+										break;
+									case 2:
+										trainers[i].dir = 1;
+										break;
+									case 3:
+										trainers[i].dir = 0;
+										break;
+								}
+								textBox = true;
+								break;
+							}
+							if(i == 26)
+							{
+								if(!haskey)
+								{
+									currText.push("This mansion is locked, you should head into the next town to find the key");
+								}else
+								{
+									currText.push("Woah sweet you found the key. Head on inside to challenge the leader");
+								}
+								switch(p.dir)
+								{
+									case 0:
+										trainers[i].dir = 3;
+										break;
+									case 1:
+										trainers[i].dir = 2;
+										break;
+									case 2:
+										trainers[i].dir = 1;
+										break;
+									case 3:
+										trainers[i].dir = 0;
+										break;
+								}
+								textBox = true;
+								break;
+							}
+							if(i == 27)
+							{
+								currText.push("The leader took refuge in a cave out of town, The train station could take you there, it's on the far side of town.");
+								switch(p.dir)
+								{
+									case 0:
+										trainers[i].dir = 3;
+										break;
+									case 1:
+										trainers[i].dir = 2;
+										break;
+									case 2:
+										trainers[i].dir = 1;
+										break;
+									case 3:
+										trainers[i].dir = 0;
+										break;
+								}
+								textBox = true;
+								break;
 							}
 						}
 					}
@@ -2976,8 +3113,7 @@ function draw()
 		{
 			if(fightDone)
 			{
-				gamestate = 2;
-
+				gamestate = 2
 				
 			}else
 			{
@@ -3040,6 +3176,7 @@ function draw()
 							trainers[currTrainer].beat = true;
 							if(trainers[currTrainer].gender == 2)
 							{
+								currText.push("Congrats for beating me. I'll tell the guard blocking the cave to move")
 								trainers[1].x -= 45;
 							}
 							if(trainers[currTrainer].gender == 3)
@@ -3054,6 +3191,7 @@ function draw()
 							}else
 							{
 								money += 500;
+								currText.push("They paid you 500$. You now have $" + money);
 							}
 						}
 						fightDone = true;
@@ -3678,7 +3816,7 @@ function draw()
 	else if(gamestate == 4) //Box view
 	{
 		textSize(12);
-		stroke(1);
+		stroke(0);
 		if(!hasloaded)
 		{
 			if(pickup == -1 && pickupTeam == null)
@@ -4081,7 +4219,20 @@ function draw()
 		image(starter1,25,150,158,158);
 		image(starter2,175,150,158,158);
 		image(starter3,325,150,158,158);
-		
+		fill('black');
+		textAlign(CENTER);
+		text("ORDER NOW AND RECEIVE 5 FREE SATCHELS",250,350);
+		textSize(25);
+		text("Ajjizon",250,50)
+		strokeWeight(5);
+		textSize(12);
+		stroke('purple');
+		noFill();
+		arc(225, 50, 100, 30, 0, PI, OPEN);
+		strokeWeight(1);
+		stroke('black');
+		fill('black');
+		textAlign(LEFT);
 
 	}
 	else if(gamestate == 6) //Shop
