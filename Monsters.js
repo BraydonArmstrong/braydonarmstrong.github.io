@@ -3498,7 +3498,11 @@ function draw()
 								needed /= 3 * enemy[enemyIndex].health;
 								needed = max(1, min(255, needed));
 								needed = Math.floor(needed);
-								console.log(needed);
+								if(trainer[currTrainer].name == "Galenado")
+								{
+									trainer[currTrainer].beat = true;
+									trainer[currTrainer].x -= 1000;
+								}
 								if(catchNum > needed)
 								{
 									currText.push("The " + enemy[enemyIndex].name + " was caught")
