@@ -1288,7 +1288,7 @@ function loadData()
 	m = JSON.parse(localStorage.getItem("m"));
 	//trainers = JSON.parse(localStorage.getItem("trainers") || "[]");
 	enteredCenter = JSON.parse(localStorage.getItem("center"));
-	if(enteredCenter == null || enteredCenter == undefined)
+	if(enteredCenter != 0 && enteredCenter != 1 && enteredCenter != 2)
 	{
 		enteredCenter = 0;
 	}
@@ -2813,11 +2813,8 @@ function draw()
 							
 							if ((p.x + p.newx) / 45 == 58 && (p.y + p.newy) / 45 == 48)
 							{
-								if(enteredCenter == 0)
-								{
-										p.x = 45 * 137;
-										p.y = 45 * 92;
-								}else if(enteredCenter == 1)
+
+								if(enteredCenter == 1)
 								{
 									p.x = 45 * 320;
 									p.y = 45 * 88;
@@ -2825,7 +2822,10 @@ function draw()
 								{
 									p.x = 45* 216;
 									p.y = 45 * 244;
-								}
+								}else
+								{
+										p.x = 45 * 137;
+										p.y = 45 * 92;
 							}else
 							{
 								if ((p.x + p.newx) / 45 == 42 && (p.y + p.newy) / 45 == 177)
