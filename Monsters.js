@@ -4498,6 +4498,7 @@ function draw()
 			{
 				gamestate = 2;
 				canLearn.shift();
+				learnMoves.shift();
 			}
 			if((keyIsDown(90) || z) && !holding)
 			{
