@@ -4302,6 +4302,7 @@ function draw()
 						team[canLearn[0]].movespp[learnIndex] = Moves[learnMoves[0]].pp;
 						gamestate = 2;
 						canLearn.shift();
+						learnMoves.shift();
 					}
 				}
 				holding = true;
@@ -4319,6 +4320,7 @@ function draw()
 				team[canLearn[0]].movespp[option] = Moves[learnMoves[0]].pp;
 				gamestate = 2;
 				canLearn.shift();
+				learnMoves.shift();
 			}
 		}
 	}
