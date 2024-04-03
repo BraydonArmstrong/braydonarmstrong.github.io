@@ -2625,7 +2625,7 @@ function draw()
 								
 								while(true)
 								{
-									if(enemy[0].evo != null)
+									if(enemy[0].evo != 0)
 									{
 										if(enemy[0].level >= enemy[0].evo)
 										{
