@@ -2211,6 +2211,7 @@ function draw()
 					if(canFight)
 					{
 						gamestate = 3;
+						fightstart = true;
 						enemy = trainers[i].team;
 						fightDone = false;
 						isTrainer = true;
@@ -2401,6 +2402,7 @@ function draw()
 							if(i == 2)
 							{
 								gamestate = 3;
+								fightstart = true;
 								enemy = trainers[i].team;
 								fightDone = false;
 								isTrainer = true;
@@ -2445,6 +2447,7 @@ function draw()
 							if(i == 4)
 							{
 								gamestate = 3;
+								fightstart = true;
 								enemy = trainers[i].team;
 								fightDone = false;
 								isTrainer = true;
@@ -2467,6 +2470,7 @@ function draw()
 							if(i == 23)
 							{
 								gamestate = 3;
+								fightstart = true;
 								enemy = trainers[i].team;
 								fightDone = false;
 								isGym = false;
@@ -2613,33 +2617,27 @@ function draw()
 								isTrainer = false;
 								isGym = false;
 								gamestate = 3;
+								fightstart = true;
 								friendStats = [0,0,0,0,0];
 								enemyStats = [0,0,0,0,0];
 								enemy = []
 								enemy[0] = Object.create(Monster);
 								Object.assign(enemy[0], Mons[spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)][Math.floor(Math.random() * spawnList[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)].length)]])
+								enemy[0].level = spawnListLevel[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)] + round(Math.random() * 2);
 								if(enemy[0].id == 34)
 								{
 									Object.assign(enemy[0], Mons[33]);
 								}
-								
-								while(true)
+								if(enemy[0].level >= enemy[0].evo && enemy[0].evo != 0 && enemy[0].evo != -1)
 								{
-									if(enemy[0].evo != 0)
-									{
-										if(enemy[0].level >= enemy[0].evo)
-										{
-											enemy[0].evolve();
-										}else
-										{
-											break;
-										}
-									}else
-									{
-										break;
-									}
+									console.log(enemy[0].evo);
+									enemy[0].evolve();
 								}
-								enemy[0].level = spawnListLevel[grassTypes.findIndex((element) => element == mapS[(p.x + p.newx) / 45][(p.y + p.newy) / 45].id)] + round(Math.random() * 2);
+								if(enemy[0].level >= enemy[0].evo && enemy[0].evo != 0 && enemy[0].evo != -1)
+								{
+									console.log(enemy[0].evo);
+									enemy[0].evolve();
+								}
 								enemy[0].calcStats();
 								enemy[0].currhealth = enemy[0].health;
 								numEnemies = 1;
@@ -3062,7 +3060,7 @@ function draw()
 					}
 				}else
 				{
-					if (team[teamIndex].currhealth == 0)
+					if (team[teamIndex].currhealth == 0 && !fightstart)
 					{
 						//swap
 						allDead = true;
@@ -3675,6 +3673,7 @@ function draw()
 				}
 			}
 		}
+		fightstart = false;
 	}
 	else if(gamestate == 4) //Box view
 	{
