@@ -3078,9 +3078,7 @@ function draw()
 			textSize(11);
 			//rect(25,75,175,10);
 			fill(255 * (1 - (enemy[enemyIndex].currhealth / enemy[enemyIndex].health)), 255 * ((enemy[enemyIndex].currhealth / enemy[enemyIndex].health)), 0);
-			noStroke();
 			rect(25, 74, 168 * (enemy[enemyIndex].currhealth / enemy[enemyIndex].health), 8);
-			stroke(0);
 		}else
 		{
 			if(trainers[currTrainer].gender == 2)
@@ -3103,9 +3101,7 @@ function draw()
 		text(team[teamIndex].currhealth + "/" + team[teamIndex].health, 295, 375);
 		//rect(295,335,175,10);
 		fill(255 * (1 - (team[teamIndex].currhealth / team[teamIndex].health)), 255 * ((team[teamIndex].currhealth / team[teamIndex].health)), 0);
-		noStroke();
 		rect(295, 334, 168 * (team[teamIndex].currhealth / team[teamIndex].health), 8);
-		stroke(0);
 		fill('white');
 		image(box, 0, 400, 500, 100);
 		//rect(0,400,500,100);
@@ -3821,7 +3817,6 @@ function draw()
 	else if(gamestate == 4) //Box view
 	{
 		textSize(12);
-		stroke(0);
 		if(!hasloaded)
 		{
 			if(pickup == -1 && pickupTeam == null)
@@ -3958,7 +3953,6 @@ function draw()
 			}
 			if(summary != null)
 			{
-				noStroke();
 				text(summary.name + "\tLv. " + summary.level,150,380);
 				fill(255);
 				rect(150, 390, 100, 20);
