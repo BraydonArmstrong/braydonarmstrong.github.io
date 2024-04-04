@@ -2777,8 +2777,12 @@ function draw()
 								currMove = 0;
 								p.x += p.newx;
 								p.y += p.newy;
+								m.x += m.newx;
+								m.y += m.newy;
 								p.newx = 0;
-								p.ney = 0;
+								p.newy = 0;
+								m.newx = 0;
+								m.newy = 0;
 								for(i = 0; i <= enemy[0].level; i++)
 								{
 									if(enemy[0].learnset[i] != null)
@@ -3141,12 +3145,12 @@ function draw()
 							{
 								if(isTrainer)
 								{
-									team[i].currxp += Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
-									currText.push(team[i].name + " has gained " + Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5) + " experience" );
+									team[i].currxp += Math.floor(Math.floor((86 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5)
+									currText.push(team[i].name + " has gained " + Math.floor(Math.floor((86 * enemy[enemyIndex].level)/7) * (1 / numParticipated) * 1.5) + " experience" );
 								}else
 								{
-									team[i].currxp += Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
-									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((128 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
+									team[i].currxp += Math.floor(Math.floor((86 * enemy[enemyIndex].level)/7) * (1 / numParticipated));
+									currText.push(team[i].name + " has gained " + (Math.floor(Math.floor((86 * enemy[enemyIndex].level)/7) * (1 / numParticipated))) + " experience" )
 								}
 								
 								while(team[i].currxp > team[i].xp)
@@ -4458,7 +4462,7 @@ function draw()
 					textBox = false;
 					if(learnIndex != -1)
 					{
-						if(team[canLearn[0]] == didLearn)
+						if(canLearn[0] == didLearn)
 						{
 							team[canLearn[0]].moves[learnIndex] = learnMoves[0];
 							team[canLearn[0]].movespp[learnIndex] = Moves[learnMoves[0]].pp;
@@ -4480,7 +4484,7 @@ function draw()
 			}
 			if((keyIsDown(90) || z) && !holding)
 			{
-				if(team[canLearn[0]] == didLearn)
+				if(canLearn[0] == didLearn)
 				{
 					team[canLearn[0]].moves[option] = learnMoves[0];
 					team[canLearn[0]].movespp[option] = Moves[learnMoves[0]].pp;
