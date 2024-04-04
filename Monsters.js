@@ -2082,7 +2082,7 @@ function draw()
 		text("Press Z to load save",250,370);
 		text("Press X to make new save",250,385);
 		textAlign(LEFT);
-		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box/Use potion in box\nD - Dex",10,400)
+		text("Controls\nArrows - Movement\nZ - Confirm/Interact\nX - Back/Exit\nS - Save\nE - Box/Use potion in box\nD - Dex/Map",10,400)
 		if((keyIsDown(90) || z))
 		{
 			check = loadData();
@@ -2092,7 +2092,7 @@ function draw()
 				holding = true;
 			}
 		}
-		if((keyIsDown(88) ||x))
+		if((keyIsDown(88) || x))
 		{
 			saveData()
 			gamestate = 5;
@@ -2189,7 +2189,7 @@ function draw()
 		
 		if((buttonsHit >= 3 || doorOpen) && !toggle)
 		{
-			spawnListLevel = [31,26,22,28,25];
+			spawnListLevel = [29,25,18,26,22];
 			doorOpen = true;
 			toggle = true;
 			trainers[24].x = 45*49;
@@ -2775,6 +2775,10 @@ function draw()
 								hasloaded = false;
 								holding = true;
 								currMove = 0;
+								p.x += p.newx;
+								p.y += p.newy;
+								p.newx = 0;
+								p.ney = 0;
 								for(i = 0; i <= enemy[0].level; i++)
 								{
 									if(enemy[0].learnset[i] != null)
